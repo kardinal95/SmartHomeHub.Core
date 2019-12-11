@@ -1,8 +1,9 @@
+from loguru import logger
 from sqlalchemy import *
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import relationship, backref
 
-from py.entities.devices import DeviceEntEnum
+from py.entities.devices import DeviceEntEnum, source_encode
 from py.srv import ServiceHub
 from py.srv.database import db_session
 from py.srv.database.models import DatabaseModel
@@ -32,7 +33,7 @@ class DeviceSourceMdl(DatabaseModel):
         dss = session\
             .query(cls)\
             .filter(cls.endpoint_uuid == ep_uuid)\
-            .filter(cls.device_param.in_(parameters.keys()))\
+            .filter(cls.endpoint_param.in_(parameters.keys()))\
             .all()
         redis = ServiceHub.retrieve(RedisSrv)
         devices = list()
@@ -42,7 +43,7 @@ class DeviceSourceMdl(DatabaseModel):
                                 parameters[item.endpoint_param]):
                 devices.append(item.device_uuid)
         for item in set(devices):
-            DeviceMdl.get_device_with_uuid(item).encode()
+            DeviceMdl.get_device_with_uuid(uuid=item, session=session).encode(session=session)
 
 
 class DeviceParameterMdl(DatabaseModel):
@@ -75,6 +76,8 @@ class DeviceMdl(DatabaseModel):
         return session.query(cls).filter(cls.uuid == uuid).first()
 
     @db_session
-    def encode(self):
-
-        pass
+    def encode(self, session):
+        encoded = source_encode(session=session, device=self)
+        redis = ServiceHub.retrieve(RedisSrv)
+        for key in encoded.keys():
+            redis.try_update(str(self.uuid), key, encoded[key])
