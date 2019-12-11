@@ -45,6 +45,7 @@ class TokenRefresh(Resource):
 
 
 class UserLogoutRefresh(Resource):
+    @abort_on_exc
     @jwt_refresh_token_required
     @db_session
     def post(self, session):
@@ -53,6 +54,7 @@ class UserLogoutRefresh(Resource):
 
 
 class UserLogoutAccess(Resource):
+    @abort_on_exc
     @jwt_required
     @db_session
     def post(self, session):
