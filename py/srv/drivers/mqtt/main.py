@@ -25,8 +25,9 @@ class MqttDriver:
         endpoints = DriverInstanceMdl.get_instance_by_uuid(uuid=self.uuid, session=session).endpoints
         targets = [(x.mqtt_params.topic_read, 0) for x in endpoints]
 
-        logger.debug('Subscribing on MQTT devices from database')
-        self.client.subscribe(targets)
+        if len(targets) > 0:
+            logger.debug('Subscribing on MQTT devices from database')
+            self.client.subscribe(targets)
 
     def __init__(self, uuid, host, port, timeout=60):
         self.uuid = uuid

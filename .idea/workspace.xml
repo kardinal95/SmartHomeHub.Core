@@ -2,52 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8609bc46-850d-4da0-8a67-bb1fb23428c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/ustal.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/README" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/script.py.mako" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/versions/5bd4104d9eef_initial.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/versions/821945a114ba_unique_names_on_endpoints_tokens.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/versions/943401e3a6a9_devices_and_stuff.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/.secrets.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/settings.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/entities/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/entities/devices/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/models/endpoints.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/endpoints.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/endpoints.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/exceptions.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/token.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/database/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/database/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/database/models/device.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/database/models/driver.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/database/models/endpoint.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/database/models/room.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/drivers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/drivers/mqtt/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/drivers/mqtt/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/drivers/mqtt/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/linker.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/redis.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/drivers/mqtt/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/drivers/mqtt/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
