@@ -1,0 +1,9 @@
+[default]
+redis_host='127.0.0.1'
+redis_port=6379
+redis_db_id=2
+
+
+[development]
+sql_host='127.0.0.1'
+sql_dbname='shh_dev'

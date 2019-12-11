@@ -6,6 +6,16 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
+loguru = "==0.4.0"
+dynaconf = "==2.2.1"
+paho-mqtt = "==1.5.0"
+sqlalchemy = "==1.3.11"
+alembic = "==1.3.1"
+psycopg2 = "==2.8.4"
+redis = "==3.3.11"
+flask = "==1.1.1"
+flask-restful = "==0.3.7"
+flask-jwt-extended = "==3.24.1"
 
 [requires]
 python_version = "3.7"
