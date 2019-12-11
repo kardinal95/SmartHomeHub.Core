@@ -1,5 +1,6 @@
 from dynaconf import *
 from flask import *
+from flask_cors import CORS
 from flask_jwt_extended import *
 from flask_restful import *
 
@@ -11,6 +12,7 @@ import py.srv.api.demo as demo
 class ApiSrv:
     def __init__(self):
         self.app = Flask(__name__)
+        self.cors = CORS(self.app, resources={r'/api/*': {'origins': '*'}})
         self.api = Api(self.app)
 
         self.app.config['SECRET_KEY'] = settings.FLASK_SECRET_KEY

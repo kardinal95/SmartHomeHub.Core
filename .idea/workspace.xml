@@ -2,42 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8609bc46-850d-4da0-8a67-bb1fb23428c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/alembic/versions/5711fbce72de_adding_rooms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/versions/8cfbe9d33c4c_interface_and_preparing_for_client_api.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/models/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/models/devices.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/models/rooms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/operations/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/operations/devices.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/operations/rooms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/operations/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/resources/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/resources/rooms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/resources/users.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/models/devices.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/models/rooms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/devices.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/rooms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/demorooms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/devices.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/database/models/interface.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/database/models/user.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dictionaries/ustal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/ustal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/entities/devices/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/entities/devices/rgb.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/rgb.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/entities/devices/sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/sensors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pipfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Pipfile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py/srv/api/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/operations/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/endpoints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/database/models/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/device.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/database/models/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/database/models/endpoint.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/endpoint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/database/models/room.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/room.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/drivers/mqtt/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/drivers/mqtt/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -160,42 +129,42 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1575922369744" />
-    <state width="1899" height="348" key="GridCell.Tab.0.bottom" timestamp="1576073635192">
+    <state width="1899" height="348" key="GridCell.Tab.0.bottom" timestamp="1576074591711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576073635192" />
-    <state width="1899" height="348" key="GridCell.Tab.0.center" timestamp="1576073635192">
+    <state width="1899" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
+    <state width="1899" height="348" key="GridCell.Tab.0.center" timestamp="1576074591711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576073635192" />
-    <state width="1899" height="348" key="GridCell.Tab.0.left" timestamp="1576073635192">
+    <state width="1899" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
+    <state width="1899" height="348" key="GridCell.Tab.0.left" timestamp="1576074591711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576073635192" />
-    <state width="1899" height="348" key="GridCell.Tab.0.right" timestamp="1576073635192">
+    <state width="1899" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
+    <state width="1899" height="348" key="GridCell.Tab.0.right" timestamp="1576074591711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576073635192" />
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1576073635087">
+    <state width="1899" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1576074591712">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576073635087" />
-    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1576073635087">
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591712" />
+    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1576074591711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576073635087" />
-    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1576073635087">
+    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
+    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1576074591711">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576073635087" />
-    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1576073635087">
+    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1576074591712">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576073635087" />
-    <state x="559" y="135" key="SettingsEditor" timestamp="1575924410221">
+    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591712" />
+    <state x="559" y="135" key="SettingsEditor" timestamp="1576074461460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="559" y="135" key="SettingsEditor/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1575924410221" />
+    <state x="559" y="135" key="SettingsEditor/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074461460" />
     <state x="1920" y="0" width="1445" height="719" key="dock-window-1" timestamp="1576064550638">
       <screen x="1920" y="0" width="1680" height="1010" />
     </state>
