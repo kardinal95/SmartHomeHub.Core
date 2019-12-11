@@ -3,7 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="8609bc46-850d-4da0-8a67-bb1fb23428c6" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/api/client/resources/users.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/client/resources/users.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/resources/demorooms.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/demorooms.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/resources/devices.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/devices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/resources/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/endpoints.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,15 +178,6 @@
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576060704166" />
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/py/srv/api/client/resources/users.py</url>
-          <line>18</line>
-          <option name="timeStamp" value="15" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="room" language="Python" />

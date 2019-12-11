@@ -8,7 +8,7 @@ from py.srv.database import db_session
 
 
 parser = reqparse.RequestParser()
-parser.add_argument('devices', type=list, location='json')
+parser.add_argument('devices', type=list, location='json', required=True)
 
 
 class Devices(Resource):

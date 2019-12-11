@@ -6,7 +6,7 @@ from py.srv.api.exceptions import abort_on_exc
 from py.srv.database import db_session
 
 parser = reqparse.RequestParser()
-parser.add_argument('rooms', type=list, location='json')
+parser.add_argument('rooms', type=list, location='json', required=True)
 
 
 class DemoRooms(Resource):
