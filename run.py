@@ -2,12 +2,13 @@ import sys
 
 from dynaconf import *
 from loguru import *
+from sqlalchemy.orm import configure_mappers
 
 from py.srv import ServiceHub
 from py.srv.api import ApiSrv
-from py.srv.database import DatabaseSrv
+from py.srv.database import DatabaseSrv, db_session
+from py.srv.database.models.user import UserMdl
 from py.srv.drivers import DriverSrv
-from py.srv.linker import LinkerSrv
 from py.srv.redis import RedisSrv
 
 
@@ -35,7 +36,6 @@ def register_services():
     # Service loading
     ServiceHub.register(RedisSrv(), RedisSrv)
     ServiceHub.register(DatabaseSrv(), DatabaseSrv)
-    #ServiceHub.register(LinkerSrv(), LinkerSrv)
     # #ServiceHub.register(ExecutorSrv(), ExecutorSrv)
 
     # #ServiceHub.register(NotificationSrv(), NotificationSrv)
@@ -49,6 +49,16 @@ def register_services():
         logger.critical('Cannot work without connection to database! Closing...')
 
 
+@db_session
+def demo_user(session):
+    usr = UserMdl.get_user_with_username(username='demo', session=session)
+    if usr is None:
+        usr = UserMdl(username='demo', acl=100)
+        usr.set_password('rf12ccb30')
+        session.add(usr)
+        session.commit()
+
+
 if __name__ == '__main__':
     configure()
     try:
@@ -58,6 +68,9 @@ if __name__ == '__main__':
         logger.exception(e)
     except KeyError as e:
         logger.exception(e)
+
+    demo_user()
+    configure_mappers()
 
     ServiceHub.register(DriverSrv(), DriverSrv)
     ServiceHub.retrieve(ApiSrv).run()

@@ -8,6 +8,8 @@ from sqlalchemy.orm import *
 from py.srv.database import db_session
 from py.srv.database.models import DatabaseModel
 
+from py.srv.database.models.endpoint import EndpointMdl # Do not delete!
+
 
 class MqttParamsMdl(DatabaseModel):
     __tablename__ = 'mqtt_params'

@@ -3,6 +3,7 @@
     <words>
       <w>drivertype</w>
       <w>mqtt</w>
+      <w>passhash</w>
       <w>postgresql</w>
       <w>psql</w>
       <w>tablename</w>

@@ -1,12 +1,12 @@
-from loguru import logger
 from sqlalchemy import *
 from sqlalchemy.dialects.postgresql import UUID
-from sqlalchemy.orm import relationship, backref
+from sqlalchemy.orm import *
 
-from py.entities.devices import DeviceEntEnum, source_encode
+from py.entities.devices import DeviceEntEnum, source_encode, keys
 from py.srv import ServiceHub
 from py.srv.database import db_session
 from py.srv.database.models import DatabaseModel
+from py.srv.database.models.interface import InterfaceMdl # ORM
 from py.srv.redis import RedisSrv
 
 
@@ -56,8 +56,9 @@ class DeviceParameterMdl(DatabaseModel):
 
 class DeviceMdl(DatabaseModel):
     __tablename__ = 'devices'
-    name = Column(String(128), nullable=False)
+    name = Column(String(128), nullable=False, unique=True)
     dev_type = Column(Enum(DeviceEntEnum))
+    interface = relationship('InterfaceMdl', uselist=False, cascade='all, delete-orphan')
     sources = relationship('DeviceSourceMdl',
                            cascade='all, delete-orphan',
                            backref=backref('device', uselist=False))
@@ -81,3 +82,8 @@ class DeviceMdl(DatabaseModel):
         redis = ServiceHub.retrieve(RedisSrv)
         for key in encoded.keys():
             redis.try_update(str(self.uuid), key, encoded[key])
+
+    def get_key_values(self):
+        redis = ServiceHub.retrieve(RedisSrv)
+        names = keys(self)
+        return {x: redis.hget(str(self.uuid), x) for x in names}

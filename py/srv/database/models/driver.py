@@ -18,7 +18,6 @@ class DriverInstanceMdl(DatabaseModel):
     driver_type = Column(Enum(DriverTypeEnum))
     comment = Column(String(128), nullable=True)
     parameters = relationship("DriverParameterMdl", cascade='all, delete-orphan')
-    endpoints = relationship("EndpointMdl", cascade='all, delete-orphan')
 
     @classmethod
     @db_session

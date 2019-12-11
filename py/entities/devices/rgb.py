@@ -11,6 +11,10 @@ def convert_to_hex(red, green, blue):
 
 
 class RGBLightHexEnt:
+    @staticmethod
+    def keys():
+        return ['color']
+
     def __init__(self, device):
         self.device = device
 

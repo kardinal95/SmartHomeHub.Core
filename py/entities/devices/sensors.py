@@ -3,6 +3,10 @@ from py.srv.redis import RedisSrv
 
 
 class SensorNumericEnt:
+    @staticmethod
+    def keys():
+        return ['value']
+
     def __init__(self, device):
         self.device = device
 

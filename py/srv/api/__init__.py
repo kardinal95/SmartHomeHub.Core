@@ -3,8 +3,9 @@ from flask import *
 from flask_jwt_extended import *
 from flask_restful import *
 
-from py.srv.api.demo.resources.endpoints import Endpoints
 from py.srv.api.token import RevokedTokenMdl
+import py.srv.api.client as client
+import py.srv.api.demo as demo
 
 
 class ApiSrv:
@@ -26,7 +27,8 @@ class ApiSrv:
         self.add_resources()
 
     def add_resources(self):
-        self.api.add_resource(Endpoints, '/api/demo/endpoints')
+        client.add_resources(self.api)
+        demo.add_resources(self.api)
 
     def run(self):
         self.app.run(debug=False)

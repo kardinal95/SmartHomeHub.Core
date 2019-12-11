@@ -57,7 +57,7 @@ def delete_endpoints(endpoints, session):
 
 @db_session
 def delete_endpoint(item, session):
-    endpoint = EndpointMdl.get_endpoint_by_uuid(item)
+    endpoint = EndpointMdl.get_endpoint_by_uuid(uuid=item, session=session)
     session.delete(endpoint)
     session.flush()
     return endpoint

@@ -23,3 +23,7 @@ mapping = {
 @db_session
 def source_encode(session, device):
     return mapping[device.dev_type](device).encode()
+
+
+def keys(device):
+    return mapping[device.dev_type].keys()
