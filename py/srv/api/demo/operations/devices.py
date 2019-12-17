@@ -62,8 +62,8 @@ def add_device(item, session):
                                               endpoint_param=source.ep_param,
                                               device_param=source.device_param))
     if model.interface['export'] is True:
-        device.interface = InterfaceMdl(read_acl=device.interface['read_acl'],
-                                        write_acl=device.interface['write_acl'])
+        device.interface = InterfaceMdl(read_acl=model.interface['read_acl'],
+                                        write_acl=model.interface['write_acl'])
     for room in model.rooms:
         mdl = RoomMdl.get_room_with_name(name=room, session=session)
         device.room_binds.append(DeviceRoomBinding(room=mdl))
