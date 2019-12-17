@@ -2,10 +2,45 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8609bc46-850d-4da0-8a67-bb1fb23428c6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/alembic/versions/587fdcbb0e89_deleted_keypairs_on_setpoints.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/61577535902f_triggers_scenario_fix.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/790454c92907_setpoint_driver.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/9e1b9307014e_deleted_device_parameters.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/a7a3c88fd9fc_setpoint_driver_enum.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/bca5d99fd0a2_triggers_scenario.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/d550d68b4f17_added_storage_device.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/alembic/versions/fbad0d4dc5d2_conditions_instructions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/entities/devices/storage.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/api/client/resources/devices.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/database/models/condition.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/database/models/instructions.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/database/models/scenario.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/database/models/trigger.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/drivers/setpoints/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/drivers/setpoints/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/drivers/setpoints/models.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/executor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/ustal.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/ustal.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/entities/devices/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/entities/devices/rgb.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/rgb.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/entities/devices/sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/sensors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/client/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/client/operations/devices.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/client/operations/devices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/models/devices.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/models/devices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/operations/devices.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/devices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/operations/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/endpoints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/operations/rooms.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/rooms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py/srv/api/demo/resources/demorooms.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/demorooms.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py/srv/api/demo/resources/devices.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/devices.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py/srv/api/demo/resources/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/endpoints.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/database/models/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/device.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/database/models/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/driver.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/drivers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/drivers/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/drivers/mqtt/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/drivers/mqtt/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/redis.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/redis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,6 +151,14 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="638" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576070032337" />
+    <state x="638" y="272" key="#xdebugger.XInspectDialog" timestamp="1576161703939">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="638" y="272" key="#xdebugger.XInspectDialog/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576161703939" />
+    <state x="837" y="222" key="#xdebugger.evaluate" timestamp="1576161494115">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="837" y="222" key="#xdebugger.evaluate/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576161494115" />
     <state x="707" y="375" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1575927942646">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -128,38 +171,38 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1575922369744" />
-    <state width="1899" height="348" key="GridCell.Tab.0.bottom" timestamp="1576074591711">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom" timestamp="1576569102012">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
-    <state width="1899" height="348" key="GridCell.Tab.0.center" timestamp="1576074591711">
+    <state width="1899" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576569102012" />
+    <state width="1899" height="282" key="GridCell.Tab.0.center" timestamp="1576569102012">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
-    <state width="1899" height="348" key="GridCell.Tab.0.left" timestamp="1576074591711">
+    <state width="1899" height="282" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576569102012" />
+    <state width="1899" height="282" key="GridCell.Tab.0.left" timestamp="1576569102012">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
-    <state width="1899" height="348" key="GridCell.Tab.0.right" timestamp="1576074591711">
+    <state width="1899" height="282" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576569102012" />
+    <state width="1899" height="282" key="GridCell.Tab.0.right" timestamp="1576569102012">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1576074591712">
+    <state width="1899" height="282" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576569102012" />
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1576568826334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591712" />
-    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1576074591711">
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576568826334" />
+    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1576568826334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
-    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1576074591711">
+    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576568826334" />
+    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1576568826334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591711" />
-    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1576074591712">
+    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576568826334" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1576568826334">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576074591712" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576568826334" />
     <state x="559" y="135" key="SettingsEditor" timestamp="1576074461460">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -172,16 +215,9 @@
       <screen x="1920" y="0" width="1680" height="1010" />
     </state>
     <state x="2171" y="95" width="1445" height="719" key="dock-window-2/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576064945040" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576060704166">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1576159676729">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576060704166" />
-  </component>
-  <component name="XDebuggerManager">
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="room" language="Python" />
-      </configuration>
-    </watches-manager>
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576159676729" />
   </component>
 </project>

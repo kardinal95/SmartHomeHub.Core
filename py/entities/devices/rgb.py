@@ -10,9 +10,15 @@ def convert_to_hex(red, green, blue):
     return "#{0:02x}{1:02x}{2:02x}".format(_clamp(red), _clamp(green), _clamp(blue))
 
 
+def convert_from_hex(value):
+    value = value.lstrip('#')
+    lv = len(value)
+    return tuple(int(value[i:i + lv // 3], 16) for i in range(0, lv, lv // 3))
+
+
 class RGBLightHexEnt:
     @staticmethod
-    def keys():
+    def outputs(device):
         return ['color']
 
     def __init__(self, device):
@@ -25,4 +31,14 @@ class RGBLightHexEnt:
         blue = redis.hget(str(self.device.uuid), 'blue')
         return {
             'color': convert_to_hex(red, green, blue)
+        }
+
+    def decode(self):
+        redis = ServiceHub.retrieve(RedisSrv)
+        color = redis.hget(str(self.device.uuid), 'color')
+        values = convert_from_hex(color)
+        return {
+            'red': values[0],
+            'green': values[1],
+            'blue': values[2]
         }

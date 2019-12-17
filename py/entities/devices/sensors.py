@@ -4,7 +4,7 @@ from py.srv.redis import RedisSrv
 
 class SensorNumericEnt:
     @staticmethod
-    def keys():
+    def outputs(device):
         return ['value']
 
     def __init__(self, device):

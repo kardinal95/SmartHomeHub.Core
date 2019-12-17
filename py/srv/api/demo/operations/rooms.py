@@ -31,12 +31,14 @@ def delete_room(item, session):
 
 @db_session
 def add_rooms(rooms, session):
+    res = list()
     for num, item in enumerate(rooms):
         try:
-            add_room(item=item, session=session)
+            res.append(add_room(item=item, session=session))
         except IntegrityError as e:
             raise SimpleException('Duplicate on #{} in sequence. Stopping'.format(num))
     session.commit()
+    return res
 
 
 @db_session

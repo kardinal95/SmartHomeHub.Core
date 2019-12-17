@@ -19,6 +19,7 @@ def get_all_endpoints(session):
 
 @db_session
 def add_endpoints(endpoints, session):
+    res = list()
     for num, item in enumerate(endpoints):
         try:
             endpoint = add_endpoint(item=item, session=session)
@@ -26,7 +27,9 @@ def add_endpoints(endpoints, session):
             raise SimpleException('Duplicate on #{} in sequence. Stopping'.format(num))
         driver = ServiceHub.retrieve(DriverSrv).get(endpoint.driver_uuid)
         driver.add_endpoint(endpoint)
+        res.append(endpoint)
     session.commit()
+    return res
 
 
 @db_session

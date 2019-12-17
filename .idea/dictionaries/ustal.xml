@@ -3,10 +3,12 @@
     <words>
       <w>cors</w>
       <w>drivertype</w>
+      <w>keypairs</w>
       <w>mqtt</w>
       <w>passhash</w>
       <w>postgresql</w>
       <w>psql</w>
+      <w>setpoint</w>
       <w>tablename</w>
     </words>
   </dictionary>

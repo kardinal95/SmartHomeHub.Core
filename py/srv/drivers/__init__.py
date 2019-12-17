@@ -1,10 +1,13 @@
 from loguru import *
 
-from py.srv.database.models.driver import *
-from py.srv.drivers.mqtt.main import *
+from py.srv.database import db_session
+from py.srv.database.models.driver import DriverTypeEnum, DriverInstanceMdl, DriverParameterMdl
+from py.srv.drivers.mqtt.main import MqttDriver
+from py.srv.drivers.setpoints.main import SetpointDriver
 
 mapping = {
-    DriverTypeEnum.mqtt: MqttDriver
+    DriverTypeEnum.mqtt: MqttDriver,
+    DriverTypeEnum.setpoint: SetpointDriver
 }
 
 

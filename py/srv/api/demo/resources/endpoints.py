@@ -21,7 +21,7 @@ class Endpoints(Resource):
     @db_session
     def put(self, session):
         args = parser.parse_args()
-        add_endpoints(endpoints=args['endpoints'], session=session)
+        return [DemoEndpointDTO(x).as_json() for x in add_endpoints(endpoints=args['endpoints'], session=session)]
 
     @abort_on_exc
     @db_session

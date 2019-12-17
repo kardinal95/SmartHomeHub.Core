@@ -2,7 +2,7 @@ import enum
 
 from py.entities.devices.rgb import RGBLightHexEnt
 from py.entities.devices.sensors import SensorNumericEnt
-from py.srv.database import db_session
+from py.entities.devices.storage import StorageEnt
 
 
 class DeviceEntEnum(enum.Enum):
@@ -12,18 +12,23 @@ class DeviceEntEnum(enum.Enum):
     Switch = enum.auto()
     RGBLightHex = enum.auto()
     Fan4Pos = enum.auto()
+    Storage = enum.auto()
 
 
 mapping = {
     DeviceEntEnum.SensorNumeric: SensorNumericEnt,
-    DeviceEntEnum.RGBLightHex: RGBLightHexEnt
+    DeviceEntEnum.RGBLightHex: RGBLightHexEnt,
+    DeviceEntEnum.Storage: StorageEnt
 }
 
 
-@db_session
-def source_encode(session, device):
+def source_encode(device):
     return mapping[device.dev_type](device).encode()
 
 
-def keys(device):
-    return mapping[device.dev_type].keys()
+def source_decode(device):
+    return mapping[device.dev_type](device).decode()
+
+
+def outputs(device):
+    return mapping[device.dev_type].outputs(device=device)

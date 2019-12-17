@@ -9,6 +9,7 @@ from py.srv.api import ApiSrv
 from py.srv.database import DatabaseSrv, db_session
 from py.srv.database.models.user import UserMdl
 from py.srv.drivers import DriverSrv
+from py.srv.executor import ScenarioExecutorSrv
 from py.srv.redis import RedisSrv
 
 
@@ -36,7 +37,7 @@ def register_services():
     # Service loading
     ServiceHub.register(RedisSrv(), RedisSrv)
     ServiceHub.register(DatabaseSrv(), DatabaseSrv)
-    # #ServiceHub.register(ExecutorSrv(), ExecutorSrv)
+    ServiceHub.register(ScenarioExecutorSrv(ServiceHub.retrieve(RedisSrv)), ScenarioExecutorSrv)
 
     # #ServiceHub.register(NotificationSrv(), NotificationSrv)
     # #ServiceHub.retrieve(NotificationSrv).add_target(

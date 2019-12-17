@@ -1,3 +1,5 @@
+from string import Template
+
 import paho.mqtt.client as mqtt
 from loguru import *
 
@@ -54,3 +56,10 @@ class MqttDriver:
     def data_from_ep(payload, params):
         parameters = params.type.as_dict(payload)
         DeviceSourceMdl.send_to_device(params.endpoint.uuid, parameters)
+
+    def data_to_ep(self, endpoint, params):
+        topic = endpoint.mqtt_params.topic_write
+        if topic is None or topic == '':
+            return
+        template = Template(endpoint.mqtt_params.type.write_template)
+        self.client.publish(topic=topic, payload=template.substitute(**params))

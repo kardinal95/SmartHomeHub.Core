@@ -28,6 +28,11 @@ from py.srv.database.models.device import *
 from py.srv.database.models.driver import *
 from py.srv.database.models.room import *
 from py.srv.database.models.interface import *
+from py.srv.database.models.trigger import *
+from py.srv.database.models.scenario import *
+from py.srv.database.models.instructions import *
+from py.srv.database.models.condition import *
+from py.srv.drivers.setpoints.models import *
 from py.srv.drivers.mqtt.models import *
 from py.srv.api.token import *
 target_metadata = ModelBase.get_base().metadata

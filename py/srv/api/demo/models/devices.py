@@ -37,33 +37,15 @@ class DemoDeviceDTO:
         }
 
 
-class DemoDeviceParameterDTO:
-    def __init__(self, info):
-        self.parameter = info['parameter']
-        self.value = info['value']
-
-    def is_valid(self):
-        return self.parameter is not None\
-               and self.parameter != ''
-
-    @classmethod
-    def are_valid(cls, sources):
-        for source in sources:
-            if not source.is_valid():
-                return False
-        return True
-
-
 class DemoDeviceInputDTO:
     def __init__(self, info):
         self.name = info['name']
         self.type = DeviceEntEnum[info['type']]
         self.rooms = info['rooms']
         self.sources = [DemoDeviceSourceDTO(x) for x in info['sources']]
-        self.parameters = [DemoDeviceParameterDTO(x) for x in info['parameters']]
+        self.interface = info['interface']
 
     def is_valid(self):
         return self.name is not None \
                and self.name != '' \
-               and DemoDeviceSourceDTO.are_valid(self.sources)\
-               and DemoDeviceParameterDTO.are_valid(self.parameters)
+               and DemoDeviceSourceDTO.are_valid(self.sources)

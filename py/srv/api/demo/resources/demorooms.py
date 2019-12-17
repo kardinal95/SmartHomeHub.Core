@@ -19,7 +19,7 @@ class DemoRooms(Resource):
     @db_session
     def put(self, session):
         args = parser.parse_args()
-        add_rooms(rooms=args['rooms'], session=session)
+        return [DemoRoomDTO(x).as_json() for x in add_rooms(rooms=args['rooms'], session=session)]
 
     @abort_on_exc
     @db_session
