@@ -61,7 +61,7 @@ def add_device(item, session):
         device.sources.append(DeviceSourceMdl(endpoint_uuid=endpoint.uuid,
                                               endpoint_param=source.ep_param,
                                               device_param=source.device_param))
-    if device.interface['export'] is True:
+    if model.interface['export'] is True:
         device.interface = InterfaceMdl(read_acl=device.interface['read_acl'],
                                         write_acl=device.interface['write_acl'])
     for room in model.rooms:
