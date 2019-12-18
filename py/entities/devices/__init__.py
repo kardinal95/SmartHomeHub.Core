@@ -1,5 +1,6 @@
 import enum
 
+from py.entities.devices.fans import Fan4PosEnt
 from py.entities.devices.rgb import RGBLightHexEnt
 from py.entities.devices.sensors import SensorNumericEnt, SensorBinaryEnt
 from py.entities.devices.storage import StorageEnt
@@ -21,7 +22,8 @@ mapping = {
     DeviceEntEnum.SensorBinary: SensorBinaryEnt,
     DeviceEntEnum.RGBLightHex: RGBLightHexEnt,
     DeviceEntEnum.Storage: StorageEnt,
-    DeviceEntEnum.LightSwitch: LightSwitchEnt
+    DeviceEntEnum.LightSwitch: LightSwitchEnt,
+    DeviceEntEnum.Fan4Pos: Fan4PosEnt
 }
 
 

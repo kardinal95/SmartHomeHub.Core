@@ -19,7 +19,7 @@ def set_state(uuid, parameters, acl, session):
     device = DeviceMdl.get_device_with_uuid(uuid=uuid, session=session)
     if device is None:
         raise IncorrectTargetException(uuid, DeviceMdl)
-    if device.interface.write_acl < acl:
+    if device.interface.write_acl > acl:
         raise SimpleException('Not allowed for current user')
     if not all(item in parameters.keys() for item in device.get_key_values()):
         raise SimpleException('Incorrect parameter list')

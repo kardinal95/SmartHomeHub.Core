@@ -42,10 +42,9 @@ class DeviceSourceMdl(DatabaseModel):
             for item in group:
                 filtered[key][item.endpoint_param] = key_values[item.device_param]
 
-        for key in filtered.keys():
+        for key in sorted(filtered.keys(), key=lambda x: min(filtered[key].values())):
             ep = EndpointMdl.get_endpoint_by_uuid(uuid=key, session=session)
             ServiceHub.retrieve(DriverSrv).get(ep.driver.uuid).data_to_ep(ep, filtered[key])
-        print(filtered)
 
     @classmethod
     @db_session
