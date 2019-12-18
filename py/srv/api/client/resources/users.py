@@ -2,10 +2,12 @@ from flask_jwt_extended import *
 from flask_restful import *
 from flask_restful import reqparse
 
+from py.srv import ServiceHub
 from py.srv.api.client.operations.users import revoke_token
 from py.srv.api.exceptions import abort_on_exc
 from py.srv.database import db_session
 from py.srv.database.models.user import UserMdl
+from py.srv.socketio import SocketIOSrv
 
 parser = reqparse.RequestParser()
 parser.add_argument('username', help='This field cannot be blank', required=True)
@@ -60,3 +62,15 @@ class UserLogoutAccess(Resource):
     def post(self, session):
         jti = get_raw_jwt()['jti']
         revoke_token(jti=jti, session=session)
+
+
+class SocketIOAccess(Resource):
+    @abort_on_exc
+    @jwt_required
+    @db_session
+    def get(self, session):
+        user = get_jwt_identity()
+        user_model = UserMdl.get_user_with_username(username=user, session=session)
+
+        return ServiceHub.retrieve(SocketIOSrv).generate_key(uuid=user_model.uuid,
+                                                             acl=user_model.acl)

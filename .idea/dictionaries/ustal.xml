@@ -9,6 +9,7 @@
       <w>postgresql</w>
       <w>psql</w>
       <w>setpoint</w>
+      <w>socketio</w>
       <w>tablename</w>
     </words>
   </dictionary>

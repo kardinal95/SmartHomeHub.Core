@@ -1,5 +1,6 @@
 import sys
 
+import eventlet
 from dynaconf import *
 from loguru import *
 from sqlalchemy.orm import configure_mappers
@@ -11,6 +12,7 @@ from py.srv.database.models.user import UserMdl
 from py.srv.drivers import DriverSrv
 from py.srv.executor import ScenarioExecutorSrv
 from py.srv.redis import RedisSrv
+from py.srv.socketio import SocketIOSrv
 
 
 def settings_validation():
@@ -44,6 +46,9 @@ def register_services():
     # #    LoggingNotificationTarget(NotificationSeverityEnum.WARNING, prefix='ALARM'))
 
     ServiceHub.register(ApiSrv(), ApiSrv)
+    ServiceHub.register(SocketIOSrv(flask=ServiceHub.retrieve(ApiSrv),
+                                    redis=ServiceHub.retrieve(RedisSrv)),
+                        SocketIOSrv)
 
     # Exit if not connected
     if ServiceHub.retrieve(DatabaseSrv).connection is None:
@@ -61,6 +66,7 @@ def demo_user(session):
 
 
 if __name__ == '__main__':
+    eventlet.monkey_patch()
     configure()
     try:
         settings_validation()
@@ -74,4 +80,5 @@ if __name__ == '__main__':
     configure_mappers()
 
     ServiceHub.register(DriverSrv(), DriverSrv)
-    ServiceHub.retrieve(ApiSrv).run()
+    eventlet.wsgi.server(eventlet.listen(('', 5000)), ServiceHub.retrieve(SocketIOSrv).app)
+    #ServiceHub.retrieve(ApiSrv).run()

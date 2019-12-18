@@ -11,3 +11,4 @@ def add_resources(api):
     api.add_resource(UserLogoutRefresh, '/api/client/auth/logout/refresh')
     api.add_resource(UserLogoutAccess, '/api/client/auth/logout/access')
     api.add_resource(Device, '/api/client/devices/<string:device_uuid>')
+    api.add_resource(SocketIOAccess, '/api/client/auth/socketio')
