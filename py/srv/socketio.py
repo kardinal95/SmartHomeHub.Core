@@ -33,6 +33,8 @@ class SocketIOSrv:
     @db_session
     def on_update(self, uuid, key_values, session):
         dev = DeviceMdl.get_device_with_uuid(uuid=uuid, session=session)
+        if dev is None:
+            return
         parameters = {x[0]: x[1] for x in key_values.items() if x[0] in dev.get_key_values()}
         if len(parameters) == 0:
             return

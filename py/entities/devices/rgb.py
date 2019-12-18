@@ -29,6 +29,10 @@ class RGBLightHexEnt:
         red = redis.hget(str(self.device.uuid), 'red')
         green = redis.hget(str(self.device.uuid), 'green')
         blue = redis.hget(str(self.device.uuid), 'blue')
+        if any(x is None for x in [red, green, blue]):
+            return {
+                'color': None
+            }
         return {
             'color': convert_to_hex(red, green, blue)
         }
@@ -36,6 +40,12 @@ class RGBLightHexEnt:
     def decode(self):
         redis = ServiceHub.retrieve(RedisSrv)
         color = redis.hget(str(self.device.uuid), 'color')
+        if color is None:
+            return {
+                'red': None,
+                'green': None,
+                'blue': None
+            }
         values = convert_from_hex(color)
         return {
             'red': values[0],

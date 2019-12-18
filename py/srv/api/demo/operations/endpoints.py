@@ -1,3 +1,4 @@
+import pickle
 import uuid
 
 from sqlalchemy.exc import IntegrityError
@@ -10,6 +11,7 @@ from py.srv.database.models.driver import DriverTypeEnum
 from py.srv.database.models.endpoint import EndpointMdl
 from py.srv.drivers import DriverSrv
 from py.srv.drivers.mqtt.models import MqttParamsMdl, MqttTypeMdl
+from py.srv.drivers.setpoints.models import SetpointParamsMdl
 
 
 @db_session
@@ -41,6 +43,10 @@ def add_endpoint(item, session):
         endpoint.mqtt_params = MqttParamsMdl(type_uuid=MqttTypeMdl.get_by_name(item['params']['type']).uuid,
                                              topic_read=item['params']['topic_read'],
                                              topic_write=item['params']['topic_write'])
+    if endpoint.driver_type == DriverTypeEnum.setpoint:
+        for sub in item['params']['pairs']:
+            endpoint.setpoint_params.append(SetpointParamsMdl(name=sub['name'],
+                                                              value=pickle.dumps(sub['value'])))
     session.add(endpoint)
     session.flush()
     return endpoint

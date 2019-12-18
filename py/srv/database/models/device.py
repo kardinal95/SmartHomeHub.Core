@@ -1,6 +1,7 @@
 from itertools import groupby
 
 from sqlalchemy import *
+from sqlalchemy import event
 from sqlalchemy.dialects.postgresql import UUID
 from sqlalchemy.orm import *
 
@@ -63,6 +64,14 @@ class DeviceSourceMdl(DatabaseModel):
                 devices.append(item.device_uuid)
         for item in set(devices):
             DeviceMdl.get_device_with_uuid(uuid=item, session=session).encode()
+
+
+@event.listens_for(DeviceSourceMdl, 'after_insert')
+def correct_values(mapper, connection, target):
+    redis = ServiceHub.retrieve(RedisSrv)
+    v = redis.hget(str(target.endpoint_uuid), target.endpoint_param)
+    redis.hset(str(target.device_uuid), target.device_param, v)
+    target.device.encode()
 
 
 class DeviceMdl(DatabaseModel):

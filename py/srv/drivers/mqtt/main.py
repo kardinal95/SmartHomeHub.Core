@@ -3,10 +3,12 @@ from string import Template
 import paho.mqtt.client as mqtt
 from loguru import *
 
+from py.srv import ServiceHub
 from py.srv.database import db_session
 from py.srv.database.models.device import DeviceSourceMdl
 from py.srv.database.models.driver import DriverInstanceMdl
 from py.srv.drivers.mqtt.models import MqttParamsMdl
+from py.srv.redis import RedisSrv
 
 
 class MqttDriver:
@@ -55,6 +57,8 @@ class MqttDriver:
     @staticmethod
     def data_from_ep(payload, params):
         parameters = params.type.as_dict(payload)
+        for item in parameters.items():
+            ServiceHub.retrieve(RedisSrv).hset(params.endpoint.uuid, item[0], item[1])
         DeviceSourceMdl.send_to_device(params.endpoint.uuid, parameters)
 
     def data_to_ep(self, endpoint, params):
