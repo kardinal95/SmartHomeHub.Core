@@ -2,11 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8609bc46-850d-4da0-8a67-bb1fb23428c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/py/entities/devices/fans.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/models/scenarios.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/scenarios.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/py/srv/api/demo/resources/scenarios.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/entities/devices/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/api/client/operations/devices.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/client/operations/devices.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/entities/devices/sensors.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/sensors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/entities/devices/storage.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/storage.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/entities/devices/switches.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/entities/devices/switches.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/py/srv/database/models/device.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/device.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/database/models/instructions.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/instructions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/database/models/scenario.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/scenario.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,46 +146,46 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="260" key="FileChooserDialogImpl/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1575922369744" />
-    <state width="1899" height="348" key="GridCell.Tab.0.bottom" timestamp="1576679213208">
+    <state width="1899" height="348" key="GridCell.Tab.0.bottom" timestamp="1576750034526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576679213208" />
-    <state width="1899" height="348" key="GridCell.Tab.0.center" timestamp="1576679213208">
+    <state width="1899" height="348" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576750034526" />
+    <state width="1899" height="348" key="GridCell.Tab.0.center" timestamp="1576750034525">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576679213208" />
-    <state width="1899" height="348" key="GridCell.Tab.0.left" timestamp="1576679213208">
+    <state width="1899" height="348" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576750034525" />
+    <state width="1899" height="348" key="GridCell.Tab.0.left" timestamp="1576750034525">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576679213208" />
-    <state width="1899" height="348" key="GridCell.Tab.0.right" timestamp="1576679213208">
+    <state width="1899" height="348" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576750034525" />
+    <state width="1899" height="348" key="GridCell.Tab.0.right" timestamp="1576750034526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576679213208" />
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1576679213208">
+    <state width="1899" height="348" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576750034526" />
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom" timestamp="1576750034526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576679213208" />
-    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1576679213208">
+    <state width="1899" height="348" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576750034526" />
+    <state width="1899" height="348" key="GridCell.Tab.1.center" timestamp="1576750034526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576679213208" />
-    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1576679213208">
+    <state width="1899" height="348" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576750034526" />
+    <state width="1899" height="348" key="GridCell.Tab.1.left" timestamp="1576750034526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576679213208" />
-    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1576679213208">
+    <state width="1899" height="348" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576750034526" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right" timestamp="1576750034526">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576679213208" />
+    <state width="1899" height="348" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576750034526" />
     <state x="559" y="135" key="SettingsEditor" timestamp="1576665571431">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="559" y="135" key="SettingsEditor/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576665571431" />
-    <state x="1920" y="0" width="1445" height="719" key="dock-window-1" timestamp="1576064550638">
+    <state x="1955" y="0" width="1445" height="1029" key="dock-window-1" timestamp="1576746325674">
       <screen x="1920" y="0" width="1680" height="1010" />
     </state>
-    <state x="1920" y="0" width="1445" height="719" key="dock-window-1/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576064550638" />
+    <state x="1955" y="0" width="1445" height="1029" key="dock-window-1/0.0.1920.1040/1920.0.1680.1010@0.0.1920.1040" timestamp="1576746325674" />
     <state x="2171" y="95" width="1445" height="719" key="dock-window-2" timestamp="1576064945040">
       <screen x="1920" y="0" width="1680" height="1010" />
     </state>
@@ -193,16 +199,16 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/py/srv/drivers/mqtt/main.py</url>
-          <line>64</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/py/srv/database/models/device.py</url>
+          <line>51</line>
+          <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/py/srv/database/models/instructions.py</url>
+          <line>34</line>
+          <option name="timeStamp" value="27" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
-    <watches-manager>
-      <configuration name="PythonConfigurationType">
-        <watch expression="template.substitute(**params)" language="Python" />
-      </configuration>
-    </watches-manager>
   </component>
 </project>

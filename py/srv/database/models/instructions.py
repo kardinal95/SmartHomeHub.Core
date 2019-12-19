@@ -1,5 +1,6 @@
 import enum
 import pickle
+import time
 
 from sqlalchemy import *
 from sqlalchemy.dialects.postgresql import UUID
@@ -42,6 +43,9 @@ class InstructionMdl(DatabaseModel):
                                                params['t_param'],
                                                kv[params['s_param']])
             target.decode()
+        if self.instruction_type == InstructionTypeEnum.WaitSec:
+            seconds = params['seconds']
+            time.sleep(seconds)
 
 
 class InstructionParamsMdl(DatabaseModel):

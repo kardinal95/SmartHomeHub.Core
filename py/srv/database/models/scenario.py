@@ -19,3 +19,8 @@ class ScenarioMdl(DatabaseModel):
     @db_session
     def get_by_uuid(cls, uuid, session):
         return session.query(cls).filter(cls.uuid == uuid).first()
+
+    @classmethod
+    @db_session
+    def get_all(cls, session):
+        return session.query(cls).all()

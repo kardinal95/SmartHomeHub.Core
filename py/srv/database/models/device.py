@@ -92,6 +92,11 @@ class DeviceMdl(DatabaseModel):
     def get_device_with_uuid(cls, uuid, session):
         return session.query(cls).filter(cls.uuid == uuid).first()
 
+    @classmethod
+    @db_session
+    def get_device_with_name(cls, name, session):
+        return session.query(cls).filter(cls.name == name).first()
+
     def encode(self):
         encoded = source_encode(self)
         redis = ServiceHub.retrieve(RedisSrv)

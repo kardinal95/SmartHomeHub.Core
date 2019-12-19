@@ -18,16 +18,16 @@ class LightSwitchEnt:
                 'enabled': None
             }
         return {
-            'enabled': bool()
+            'enabled': bool(v)
         }
 
     def decode(self):
         redis = ServiceHub.retrieve(RedisSrv)
-        v = redis.hget(str(self.device.uuid), 'raw')
+        v = redis.hget(str(self.device.uuid), 'enabled')
         if v is None:
             return {
                 'raw': None
             }
         return {
-            'raw': int()
+            'raw': int(v)
         }

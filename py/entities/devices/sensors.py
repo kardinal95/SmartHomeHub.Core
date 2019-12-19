@@ -28,5 +28,5 @@ class SensorBinaryEnt(SensorCommonEnt):
                 'value': None
             }
         return {
-            'value': bool()
+            'value': bool(v)
         }
