@@ -16,7 +16,7 @@ def id_generator(size=6, chars=string.ascii_uppercase + string.digits + string.a
 class SocketIOSrv:
     access = None
     room_map = None
-    sio = socketio.Server()
+    sio = socketio.Server(cors_allowed_origins='*')
 
     def __init__(self, flask, redis):
         self.rooms = dict()
