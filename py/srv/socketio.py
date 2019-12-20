@@ -63,7 +63,7 @@ class SocketIOSrv:
                     return
 
 
-@SocketIOSrv.sio.event
+@SocketIOSrv.sio.on('authenticate')
 def authenticate(sid, data):
     logger.info('Sid {} trying to login...'.format(sid))
     io = ServiceHub.retrieve(SocketIOSrv)
