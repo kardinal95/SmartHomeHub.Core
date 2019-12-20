@@ -65,13 +65,16 @@ class SocketIOSrv:
 
 @SocketIOSrv.sio.event
 def authenticate(sid, data):
+    logger.info('Sid {} trying to login...'.format(sid))
     io = ServiceHub.retrieve(SocketIOSrv)
     if 'key' not in data.keys():
         io.sio.emit('incorrect', {'message': 'incorrect authentication'})
+        logger.warning('Incorrect key for sid {}'.format(sid))
     for uuid in io.access.keys():
         if io.access[uuid][0] == data['key']:
             io.add_to_room(io.access[uuid][1], sid)
             io.sio.emit('correct', {'message': 'successful authentication'})
+            logger.info('Successful authentication for sid {}'.format(sid))
 
 
 @SocketIOSrv.sio.event
