@@ -42,8 +42,10 @@ class SocketIOSrv:
             return
         acl = dev.interface.read_acl
         for key in self.room_map.keys():
+            logger.info('Checking for acl {}. Acl of device is {}'.format(str(key), str(acl)))
             if key >= acl:
                 for item in self.room_map[key]:
+                    logger.info('Sending state of {} to {}'.format(str(uuid), str(item)))
                     self.sio.emit('state', {'uuid': uuid,
                                             'parameters': key_values}, room=item)
 
