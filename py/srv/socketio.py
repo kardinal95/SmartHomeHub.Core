@@ -64,15 +64,19 @@ class SocketIOSrv:
 
 
 @SocketIOSrv.sio.event
-def connect(sid, environ=None):
-    if 'HTTP_KEY' not in environ:
-        raise ConnectionRefusedError('No authentication key provided')
+def authenticate(sid, data):
     io = ServiceHub.retrieve(SocketIOSrv)
+    if 'key' not in data.keys():
+        io.sio.emit('incorrect', {'message': 'incorrect authentication'})
     for uuid in io.access.keys():
-        if io.access[uuid][0] == environ['HTTP_KEY']:
+        if io.access[uuid][0] == data['key']:
             io.add_to_room(io.access[uuid][1], sid)
-            return
-    raise ConnectionRefusedError('Authentication failed')
+            io.sio.emit('correct', {'message': 'successful authentication'})
+
+
+@SocketIOSrv.sio.event
+def connect(sid, environ=None):
+    logger.debug('Connection from sid {}'.format(sid))
 
 
 @SocketIOSrv.sio.event
