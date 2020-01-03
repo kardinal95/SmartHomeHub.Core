@@ -71,12 +71,14 @@ def authenticate(sid, data):
         io.sio.emit('auth', {'success': False,
                              'message': 'No key provided'})
         logger.warning('No key for sid {}'.format(sid))
+        return
     for uuid in io.access.keys():
         if io.access[uuid][0] == data['key']:
             io.add_to_room(io.access[uuid][1], sid)
             io.sio.emit('auth', {'success': True,
                                  'message': 'successful authentication'})
             logger.info('Successful authentication for sid {}'.format(sid))
+            return
     io.sio.emit('auth', {'success': False,
                          'message': 'Incorrect data provided'})
     logger.warning('Incorrect key for sid {}'.format(sid))
