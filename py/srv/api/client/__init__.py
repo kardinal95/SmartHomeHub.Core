@@ -1,4 +1,5 @@
 from py.srv.api.client.resources.devices import Device
+from py.srv.api.client.resources.notifications import Notifications
 from py.srv.api.client.resources.rooms import *
 from py.srv.api.client.resources.users import *
 
@@ -12,3 +13,4 @@ def add_resources(api):
     api.add_resource(UserLogoutAccess, '/api/client/auth/logout/access')
     api.add_resource(Device, '/api/client/devices/<string:device_uuid>')
     api.add_resource(SocketIOAccess, '/api/client/auth/socketio')
+    api.add_resource(Notifications, '/api/client/notifications')

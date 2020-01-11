@@ -35,6 +35,8 @@ from py.srv.database.models.condition import *
 from py.srv.drivers.setpoints.models import *
 from py.srv.drivers.mqtt.models import *
 from py.srv.api.token import *
+from py.srv.drivers.alarms.models import *
+from py.srv.notifications import NotificationMdl
 target_metadata = ModelBase.get_base().metadata
 
 # other values from the config, defined by the needs of env.py,

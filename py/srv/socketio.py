@@ -30,6 +30,14 @@ class SocketIOSrv:
         self.access[str(uuid)] = (id_generator(size=32), acl)
         return self.access[str(uuid)][0]
 
+    def send_notification(self, data, acl):
+        for key in self.room_map.keys():
+            logger.info('Checking for acl {}. Acl of notification is {}'.format(str(key), str(acl)))
+            if key >= acl:
+                for item in self.room_map[key]:
+                    logger.info('Sending new notification to {}'.format(str(item)))
+                    self.sio.emit('notification', data, room=item)
+
     @db_session
     def on_update(self, uuid, key_values, session):
         dev = DeviceMdl.get_device_with_uuid(uuid=uuid, session=session)

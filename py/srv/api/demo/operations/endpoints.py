@@ -10,6 +10,7 @@ from py.srv.database import db_session
 from py.srv.database.models.driver import DriverTypeEnum
 from py.srv.database.models.endpoint import EndpointMdl
 from py.srv.drivers import DriverSrv
+from py.srv.drivers.alarms.models import AlarmParamsMdl, AlarmSeverityEnum
 from py.srv.drivers.mqtt.models import MqttParamsMdl, MqttTypeMdl
 from py.srv.drivers.setpoints.models import SetpointParamsMdl
 
@@ -47,6 +48,12 @@ def add_endpoint(item, session):
         for sub in item['params']['pairs']:
             endpoint.setpoint_params.append(SetpointParamsMdl(name=sub['name'],
                                                               value=pickle.dumps(sub['value'])))
+    if endpoint.driver_type == DriverTypeEnum.alarm:
+        endpoint.alarm_params = AlarmParamsMdl(msg_on=item['params']['msg_on'],
+                                               msg_off=item['params']['msg_off'],
+                                               severity=AlarmSeverityEnum[item['params']['severity']],
+                                               acl=item['params']['acl'],
+                                               triggered=False)
     session.add(endpoint)
     session.flush()
     return endpoint

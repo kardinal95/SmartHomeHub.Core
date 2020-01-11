@@ -12,6 +12,7 @@ from py.srv.database.models import DatabaseModel
 class DriverTypeEnum(enum.Enum):
     mqtt = enum.auto()
     setpoint = enum.auto()
+    alarm = enum.auto()
 
 
 class DriverInstanceMdl(DatabaseModel):
