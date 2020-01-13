@@ -2,27 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8609bc46-850d-4da0-8a67-bb1fb23428c6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/alembic/versions/32d90f2f5eba_adding_alarms_and_notifications.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/versions/8abff26b6d5c_fixing_acl_on_notifications.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/versions/9d0be62b91c1_fixing_driver_type_enum.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/alembic/versions/eab513c1e82c_removed_incorrect_name_from_alarms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/models/notifications.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/operations/notifications.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/api/client/resources/notifications.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/drivers/alarms/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/drivers/alarms/main.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/drivers/alarms/models.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/notifications/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/notifications/providers/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/py/srv/notifications/providers/socketio.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/alembic/env.py" beforeDir="false" afterPath="$PROJECT_DIR$/alembic/env.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/api/client/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/client/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/api/demo/operations/endpoints.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/demo/operations/endpoints.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/database/models/driver.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/database/models/driver.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/drivers/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/drivers/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/py/srv/socketio.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/socketio.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/run.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/api/client/models/notifications.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/api/client/models/notifications.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/py/srv/notifications/providers/socketio.py" beforeDir="false" afterPath="$PROJECT_DIR$/py/srv/notifications/providers/socketio.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -13,5 +13,5 @@ class NotificationDTO:
             'uuid': str(self.uuid),
             'msg': self.msg,
             'severity': self.severity,
-            'timestamp': self.timestamp.strftime('%d-%b-%Y (%H:%M:%S.%f)')
+            'timestamp': self.timestamp.timestamp()
         }
