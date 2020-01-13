@@ -2,7 +2,7 @@ from py.srv import ServiceHub
 from py.srv.redis import RedisSrv
 
 
-class LightSwitchEnt:
+class SwitchEnt:
     @staticmethod
     def outputs(device):
         return ['enabled']
@@ -31,3 +31,8 @@ class LightSwitchEnt:
         return {
             'raw': int(v)
         }
+
+
+class LightSwitchEnt(SwitchEnt):
+    def __init__(self, device):
+        super(LightSwitchEnt, self).__init__(device)

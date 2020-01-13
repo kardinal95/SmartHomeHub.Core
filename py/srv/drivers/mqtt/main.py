@@ -33,7 +33,7 @@ class MqttDriver:
             logger.debug('Subscribing on MQTT devices from database')
             self.client.subscribe(targets)
 
-    def __init__(self, uuid, host, port, timeout=60):
+    def __init__(self, uuid, host, port, timeout=60, username=None, password=None):
         self.uuid = uuid
         # TODO Check if parameters exists
         self.client = mqtt.Client()
@@ -42,6 +42,8 @@ class MqttDriver:
 
         # TODO Connection errors
         logger.info('Connecting to mqtt server on {}:{}', host, port)
+        if username is not None:
+            self.client.username_pw_set(username, password)
         self.client.connect(host, port, timeout)
 
         self.client.loop_start()

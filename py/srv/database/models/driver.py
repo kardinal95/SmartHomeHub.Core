@@ -26,6 +26,11 @@ class DriverInstanceMdl(DatabaseModel):
     def get_instance_by_uuid(cls, uuid, session):
         return session.query(cls).filter(cls.uuid == uuid).first()
 
+    @classmethod
+    @db_session
+    def get_instance_by_comment(cls, comment, session):
+        return session.query(cls).filter(cls.comment == comment).first()
+
 
 class DriverParameterMdl(DatabaseModel):
     __tablename__ = 'driver_parameters'

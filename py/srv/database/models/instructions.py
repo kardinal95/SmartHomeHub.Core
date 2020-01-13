@@ -39,9 +39,12 @@ class InstructionMdl(DatabaseModel):
             kv = source.get_key_values()
             if params['s_param'] not in kv or params['t_param'] not in target.get_key_values():
                 return
-            ServiceHub.retrieve(RedisSrv).hset(str(params['target']),
-                                               params['t_param'],
-                                               kv[params['s_param']])
+            ServiceHub.retrieve(RedisSrv).try_update(str(params['target']),
+                                                     params['t_param'],
+                                                      kv[params['s_param']])
+            #ServiceHub.retrieve(RedisSrv).hset(str(params['target']),
+            #                                   params['t_param'],
+            #                                   kv[params['s_param']])
             target.decode()
         if self.instruction_type == InstructionTypeEnum.WaitSec:
             seconds = params['seconds']

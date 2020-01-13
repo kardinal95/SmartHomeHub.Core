@@ -7,7 +7,7 @@ from sqlalchemy.orm.exc import UnmappedInstanceError
 from py.srv import ServiceHub
 from py.srv.api.exceptions import SimpleException
 from py.srv.database import db_session
-from py.srv.database.models.driver import DriverTypeEnum
+from py.srv.database.models.driver import DriverTypeEnum, DriverInstanceMdl
 from py.srv.database.models.endpoint import EndpointMdl
 from py.srv.drivers import DriverSrv
 from py.srv.drivers.alarms.models import AlarmParamsMdl, AlarmSeverityEnum
@@ -37,7 +37,8 @@ def add_endpoints(endpoints, session):
 
 @db_session
 def add_endpoint(item, session):
-    endpoint = EndpointMdl(driver_uuid=uuid.UUID(item['driver_uuid']),
+    driver_uuid = DriverInstanceMdl.get_instance_by_comment(item['driver_comment']).uuid
+    endpoint = EndpointMdl(driver_uuid=driver_uuid,
                            driver_type=DriverTypeEnum[item['driver_type']],
                            name=item['name'])
     if endpoint.driver_type == DriverTypeEnum.mqtt:

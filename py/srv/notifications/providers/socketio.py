@@ -8,7 +8,7 @@ class SocketIOProvider:
 
     def send(self, notification, acl):
         ServiceHub.retrieve(SocketIOSrv).send_notification({
-            'uuid': notification.uuid,
+            'uuid': str(notification.uuid),
             'message': notification.msg,
             'severity': notification.severity,
             'time': notification.timestamp.timestamp()

@@ -33,9 +33,11 @@ class AlarmDriver:
         if 'state' not in params.keys() or params['state'] is None:
             return
         ap = endpoint.alarm_params
+        if ap.triggered == params['state']:
+            return
         ap.set_state(state=params['state'])
         # TODO Should it be configured outside of the function?
-        if params['state'] is True:
+        if bool(params['state']) is True:
             msg = ap.msg_on
             severity = ap.severity
         else:

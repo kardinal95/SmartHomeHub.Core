@@ -8,7 +8,7 @@ from py.srv.api.exceptions import SimpleException
 from py.srv.database import db_session
 from py.srv.database.models.condition import ConditionMdl
 from py.srv.database.models.device import DeviceMdl
-from py.srv.database.models.instructions import InstructionMdl, InstructionParamsMdl
+from py.srv.database.models.instructions import InstructionMdl, InstructionParamsMdl, InstructionTypeEnum
 from py.srv.database.models.scenario import ScenarioMdl
 from py.srv.database.models.trigger import TriggerMdl
 
@@ -72,6 +72,9 @@ def add_scenario(item, session):
         instruction = InstructionMdl(order=item.order, instruction_type=item.type)
         for sub in item.parameters.items():
             param = InstructionParamsMdl(name=sub[0], pickle_value=pickle.dumps(sub[1]))
+            if instruction.instruction_type == InstructionTypeEnum.SetValue \
+                    and param.name in ['source', 'target']:
+                param.pickle_value = pickle.dumps(DeviceMdl.get_device_with_name(sub[1]).uuid)
             instruction.parameters.append(param)
         scenario.instructions.append(instruction)
 
