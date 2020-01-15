@@ -1,11 +1,14 @@
+from py.srv.api.client import get_room_devices
 from py.srv.api.exceptions import IncorrectTargetException
 from py.srv.database import db_session
 from py.srv.database.models.room import RoomMdl
 
 
 @db_session
-def get_all_rooms(session):
-    return RoomMdl.get_all_rooms(session=session)
+def get_all_rooms(session, acl):
+    rooms = RoomMdl.get_all_rooms(session=session)
+    filtered = [x for x in rooms if len(get_room_devices(uuid=x.uuid, acl=acl, session=session)) > 0]
+    return filtered
 
 
 @db_session

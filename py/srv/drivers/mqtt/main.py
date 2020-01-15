@@ -68,4 +68,4 @@ class MqttDriver:
         if topic is None or topic == '':
             return
         template = Template(endpoint.mqtt_params.type.write_template)
-        self.client.publish(topic=topic, payload=template.substitute(**params))
+        self.client.publish(topic=topic, payload=template.substitute(**params), retain=True)

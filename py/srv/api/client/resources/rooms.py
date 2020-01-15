@@ -17,7 +17,8 @@ class Rooms(Resource):
     @jwt_required
     @db_session
     def get(self, session):
-        rooms = get_all_rooms(session=session)
+        acl = UserMdl.get_user_with_username(username=get_jwt_identity(), session=session).acl
+        rooms = get_all_rooms(session=session, acl=acl)
 
         return [RoomDTO(x).as_json() for x in rooms]
 
