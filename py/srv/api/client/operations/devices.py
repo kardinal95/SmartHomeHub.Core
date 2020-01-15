@@ -1,5 +1,4 @@
 from py.srv import ServiceHub
-from py.srv.api.client.operations.rooms import get_room
 from py.srv.api.exceptions import *
 from py.srv.database import db_session
 from py.srv.database.models.device import DeviceMdl
