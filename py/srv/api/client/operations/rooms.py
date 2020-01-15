@@ -1,4 +1,4 @@
-from py.srv.api.client import get_room_devices
+from py.srv.api.client.operations.devices import get_room_devices
 from py.srv.api.exceptions import IncorrectTargetException
 from py.srv.database import db_session
 from py.srv.database.models.room import RoomMdl
