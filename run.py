@@ -64,6 +64,18 @@ def demo_user(session):
         usr.set_password('rf12ccb30')
         session.add(usr)
         session.commit()
+    usr = UserMdl.get_user_with_username(username='user', session=session)
+    if usr is None:
+        usr = UserMdl(username='user', acl=50)
+        usr.set_password('userpass')
+        session.add(usr)
+        session.commit()
+    usr = UserMdl.get_user_with_username(username='manager', session=session)
+    if usr is None:
+        usr = UserMdl(username='manager', acl=100)
+        usr.set_password('managerpass')
+        session.add(usr)
+        session.commit()
 
 
 if __name__ == '__main__':
