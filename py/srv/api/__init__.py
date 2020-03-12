@@ -7,6 +7,7 @@ from flask_restful import *
 from py.srv.api.token import RevokedTokenMdl
 import py.srv.api.client as client
 import py.srv.api.demo as demo
+import py.srv.api.admin as admin
 
 
 class ApiSrv:
@@ -31,6 +32,7 @@ class ApiSrv:
     def add_resources(self):
         client.add_resources(self.api)
         demo.add_resources(self.api)
+        admin.add_resources(self.api)
 
     def run(self):
         self.app.run(debug=False)

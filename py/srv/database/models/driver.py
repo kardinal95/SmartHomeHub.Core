@@ -28,6 +28,11 @@ class DriverInstanceMdl(DatabaseModel):
 
     @classmethod
     @db_session
+    def get_all(cls, session):
+        return session.query(cls).all()
+
+    @classmethod
+    @db_session
     def get_instance_by_comment(cls, comment, session):
         return session.query(cls).filter(cls.comment == comment).first()
 
