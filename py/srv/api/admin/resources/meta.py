@@ -18,7 +18,7 @@ class DriverTypeParameters(Resource):
             return [
                 {
                     'name': 'host',
-                    'type': 'ip',
+                    'type': 'host',
                     'required': True,
                     'default': '127.0.0.1'
                 },
@@ -33,6 +33,18 @@ class DriverTypeParameters(Resource):
                     'type': 'number',
                     'required': False,
                     'default': 60
+                },
+                {
+                    'name': 'username',
+                    'type': 'string',
+                    'required': False,
+                    'default': ''
+                },
+                {
+                    'name': 'password',
+                    'type': 'string',
+                    'required': False,
+                    'default': ''
                 }
             ]
         return []
