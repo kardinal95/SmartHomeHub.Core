@@ -14,7 +14,7 @@ class DriverTypeParameters(Resource):
     # TODO Change to config-based
     @abort_on_exc
     def get(self, driver_type):
-        if type == 'mqtt':
+        if driver_type == 'mqtt':
             return [
                 {
                     'name': 'host',
