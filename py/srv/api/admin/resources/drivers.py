@@ -9,5 +9,5 @@ class Drivers(Resource):
     @abort_on_exc
     @db_session
     def get(self, session):
-        drivers = get_drivers(session)
+        drivers = get_drivers(session=session)
         return [x.as_json() for x in drivers]
