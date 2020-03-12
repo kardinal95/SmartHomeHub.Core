@@ -10,7 +10,7 @@ class DriverDTO:
 
     def as_json(self):
         return {
-            'uuid': self.uuid,
+            'uuid': str(self.uuid),
             'comment': self.comment,
             'type': self.type.name,
             'parameters': dict([x.get_as_pair() for x in self.parameters])
