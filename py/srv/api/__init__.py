@@ -31,7 +31,6 @@ class ApiSrv:
 
     def add_resources(self):
         client.add_resources(self.api)
-        demo.add_resources(self.api)
         admin.add_resources(self.api)
 
     def run(self):
