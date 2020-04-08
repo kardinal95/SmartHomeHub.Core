@@ -14,7 +14,7 @@ class EndpointDTO:
             'uuid': str(self.uuid),
             'name': self.name,
             'driver': {
-                'uuid': str(self.uuid),
+                'uuid': str(self.driver_uuid),
                 'comment': self.driver_comment,
                 'type': self.driver_type.name
             }
