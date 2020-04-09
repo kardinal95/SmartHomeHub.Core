@@ -13,5 +13,5 @@ class SetpointParamsMdl(DatabaseModel):
     endpoint = relationship('EndpointMdl',
                             uselist=False,
                             backref=backref('setpoint_params',
-                                            uselist=True,
+                                            uselist=False,
                                             cascade='all, delete-orphan'))
