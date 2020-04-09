@@ -10,6 +10,7 @@ def get_all_endpoints(session):
 
 @db_session
 def get_endpoint_parameters(ep_uuid, session):
+    print(ep_uuid)
     ep = EndpointMdl.get_endpoint_by_uuid(uuid=ep_uuid, session=session)
     if ep.driver_type == DriverTypeEnum.mqtt:
         return ep.mqtt_params
