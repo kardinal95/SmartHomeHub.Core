@@ -15,6 +15,7 @@ def get_required_params(params, session):
         return SetpointParamsDTO(params=params)
     if params is AlarmParamsMdl:
         return AlarmParamsDTO(params=params)
+    print('CRIT')
 
 
 class EndpointDTO:
