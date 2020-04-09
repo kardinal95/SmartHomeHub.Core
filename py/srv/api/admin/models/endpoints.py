@@ -48,7 +48,7 @@ class MqttParamsDTO:
         return {
             'topic_read': self.topic_read,
             'topic_write': self.topic_write,
-            'type': self.type.name
+            'type': self.type.comment
         }
 
 
