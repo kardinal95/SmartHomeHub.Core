@@ -28,5 +28,5 @@ class SetpointDriver:
 
     @staticmethod
     def data_from_ep(endpoint):
-        params = {x.name: pickle.loads(x.value) for x in endpoint.setpoint_params}
+        params = {endpoint.setpoint_params.name: pickle.loads(endpoint.setpoint_params.value)}
         DeviceSourceMdl.send_to_device(endpoint.uuid, params)
