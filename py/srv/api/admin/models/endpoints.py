@@ -9,13 +9,12 @@ from py.srv.drivers.setpoints.models import SetpointParamsMdl
 
 @db_session
 def get_required_params(params, session):
-    if params is MqttParamsMdl:
+    if isinstance(params, MqttParamsMdl):
         return MqttParamsDTO(params=params, session=session)
-    if params is SetpointParamsMdl:
+    if isinstance(params, SetpointParamsMdl):
         return SetpointParamsDTO(params=params)
-    if params is AlarmParamsMdl:
+    if isinstance(params, AlarmParamsMdl):
         return AlarmParamsDTO(params=params)
-    print('CRIT')
 
 
 class EndpointDTO:
