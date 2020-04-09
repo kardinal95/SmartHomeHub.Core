@@ -21,4 +21,5 @@ class EndpointParameters(Resource):
     @db_session
     def get(self, ep_uuid, session):
         params = get_endpoint_parameters(ep_uuid=uuid.UUID(ep_uuid), session=session)
+        print(params)
         return get_required_params(params=params, session=session).as_json()
