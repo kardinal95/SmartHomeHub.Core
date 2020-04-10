@@ -50,6 +50,8 @@ def process_add(mods, session):
             ep.mqtt_params = MqttParamsMdl()
             if "topic_read" not in item['parameters'].keys():
                 raise ApiOperationError("add", "Missing required parameter: topic_read", item)
+            if item['parameters']['topic_read']['value'] == "":
+                raise ApiOperationError("add", "Cannot subscribe on empty topics", item)
             ep.mqtt_params.topic_read = item['parameters']['topic_read']['value']
             if "topic_write" in item['parameters'].keys():
                 ep.mqtt_params.topic_write = item['parameters']['topic_write']['value']
