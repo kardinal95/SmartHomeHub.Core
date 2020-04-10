@@ -32,7 +32,7 @@ def get_endpoint_parameters(ep_uuid, session):
 
 @db_session
 def process_add(mods, session):
-    ops = list()
+    eps = list()
 
     for item in mods:
         if item['name'] == "":
@@ -92,14 +92,14 @@ def process_add(mods, session):
             ep.value = pickle.dumps(item['parameters']['value'])
 
         session.add(ep)
-        ops.append(lambda: ServiceHub.retrieve(DriverSrv).get(ep.driver_uuid).add_endpoint(ep))
+        eps.append(ep)
     session.flush()
-    return ops
+    return eps
 
 
 @db_session
 def process_delete(mods, session):
-    ops = list()
+    eps = list()
 
     for item in mods:
         ep = EndpointMdl.get_endpoint_by_uuid(uuid=uuid.UUID(item),
@@ -109,20 +109,21 @@ def process_delete(mods, session):
         except IntegrityError:
             raise ApiOperationError("delete",
                                     f"Cannot delete item in use with uuid: {item}")
-        ops.append(lambda: ServiceHub.retrieve(DriverSrv).get(ep.driver_uuid).delete_endpoint(ep))
+        eps.append(ep)
     session.flush()
-    return ops
+    return eps
 
 
 @db_session
 def process_modifications(mods, session):
-    ops = list()
+    eps = dict()
     try:
-        ops.extend(process_add(mods=mods['added'], session=session))
-        ops.extend(process_delete(mods=mods['removed'], session=session))
+        eps['added'] = (process_add(mods=mods['added'], session=session))
+        eps['removed'] = (process_delete(mods=mods['removed'], session=session))
     except ApiOperationError as e:
         session.rollback()
         raise e
-    for item in ops:
-        item()
+    for item in eps['added']:
+        ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).add_endpoint(item)
+        ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).delete_endpoint(item)
     session.commit()
