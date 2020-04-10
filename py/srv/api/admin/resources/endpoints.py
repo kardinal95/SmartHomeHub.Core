@@ -1,11 +1,19 @@
 import uuid
 
-from flask_restful import Resource
+from flask_restful import Resource, reqparse, abort
 
 from py.srv.api.admin.models.endpoints import EndpointDTO, get_required_params
-from py.srv.api.admin.operations.endpoints import get_all_endpoints, get_endpoint_parameters
-from py.srv.api.exceptions import abort_on_exc
+from py.srv.api.admin.operations.endpoints import get_all_endpoints, get_endpoint_parameters, process_modifications
+from py.srv.api.exceptions import abort_on_exc, ApiOperationError
 from py.srv.database import db_session
+
+
+parser = reqparse.RequestParser()
+parser.add_argument('mods',
+                    help='This field cannot be blank',
+                    type=dict,
+                    required=True,
+                    location='json')
 
 
 class Endpoints(Resource):
@@ -14,6 +22,17 @@ class Endpoints(Resource):
     def get(self, session):
         endpoints = get_all_endpoints(session=session)
         return [EndpointDTO(x).as_json() for x in endpoints]
+
+    @abort_on_exc
+    @db_session
+    def post(self, session):
+        args = parser.parse_args()
+
+        try:
+            process_modifications(mods=args['mods'], session=session)
+        except ApiOperationError as e:
+            abort(400, message=str(e))
+        return
 
 
 class EndpointParameters(Resource):

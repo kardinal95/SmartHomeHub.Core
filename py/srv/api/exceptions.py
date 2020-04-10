@@ -15,6 +15,18 @@ def abort_on_exc(func):
     return wrapper
 
 
+class ApiOperationError(Exception):
+    def __init__(self, op, text, debug=None):
+        self.op = op
+        self.text = text
+        self.debug = debug
+
+    def __str__(self):
+        if self.debug is None:
+            return 'Error on operation:{}\n{}\n'.format(self.op, self.text)
+        return 'Error on operation:{}\n{}\n{}'.format(self.op, self.text, self.debug)
+
+
 class IncorrectTargetException(Exception):
     def __init__(self, uuid, target_type):
         self.uuid = uuid
