@@ -33,7 +33,7 @@ def process_add(mods, session):
     for item in mods:
         if item['name'] == "":
             raise ApiOperationError("add", "Name cannot be empty", item)
-        if DriverInstanceMdl.get_instance_by_uuid(uuid=item.driver.uuid, session=session) is None:
+        if DriverInstanceMdl.get_instance_by_uuid(uuid=item['driver']['uuid'], session=session) is None:
             raise ApiOperationError("add", "Cannot find specified driver", item['driver'])
         ep = EndpointMdl(uuid=uuid.UUID(item['uuid']),
                          name=item['name'],
