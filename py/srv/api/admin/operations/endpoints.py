@@ -88,10 +88,10 @@ def process_add(mods, session):
             ep.setpoint_params = SetpointParamsMdl()
             if "name" not in item['parameters'].keys():
                 raise ApiOperationError("Missing required parameter: name", item['uuid'])
-            ep.name = item['parameters']['name']
+            ep.setpoint_params.name = item['parameters']['name']
             if "value" not in item['parameters'].keys():
                 raise ApiOperationError("Missing required parameter: value", item['uuid'])
-            ep.value = pickle.dumps(item['parameters']['value'])
+            ep.setpoint_params.value = pickle.dumps(item['parameters']['value'])
 
         session.add(ep)
         eps.append(ep)
