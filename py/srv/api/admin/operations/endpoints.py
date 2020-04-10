@@ -109,8 +109,8 @@ def process_delete(mods, session):
         try:
             session.delete(ep)
             session.flush()
-        except IntegrityError or ForeignKeyViolation:
-            raise ApiOperationError(f"Cannot delete item: currently in use", item['uuid'])
+        except IntegrityError:
+            raise ApiOperationError(f"Cannot delete item: currently in use", item)
         eps.append(ep)
     return eps
 
