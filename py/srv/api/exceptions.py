@@ -20,11 +20,11 @@ class ApiOperationError(Exception):
         self.msg = msg
         self.target = target
 
-    def __str__(self):
-        return str({
+    def as_json(self):
+        return {
             'msg': self.msg,
             'target': self.target
-        })
+        }
 
 
 class IncorrectTargetException(Exception):

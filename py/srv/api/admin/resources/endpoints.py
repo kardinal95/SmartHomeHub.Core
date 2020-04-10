@@ -31,7 +31,7 @@ class Endpoints(Resource):
         try:
             process_modifications(mods=args['mods'], session=session)
         except ApiOperationError as e:
-            abort(400, message=str(e))
+            abort(400, message=e.as_json())
         return
 
 
