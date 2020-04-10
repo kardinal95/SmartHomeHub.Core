@@ -125,5 +125,6 @@ def process_modifications(mods, session):
         raise e
     for item in eps['added']:
         ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).add_endpoint(item)
+    for item in eps['removed']:
         ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).delete_endpoint(item)
     session.commit()
