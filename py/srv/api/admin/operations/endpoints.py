@@ -1,6 +1,8 @@
 import pickle
 import uuid
 
+from sqlalchemy.exc import IntegrityError
+
 from py.srv import ServiceHub
 from py.srv.api.exceptions import ApiOperationError
 from py.srv.database import db_session
@@ -30,6 +32,8 @@ def get_endpoint_parameters(ep_uuid, session):
 
 @db_session
 def process_add(mods, session):
+    ops = list()
+
     for item in mods:
         if item['name'] == "":
             raise ApiOperationError("add", "Name cannot be empty", item)
@@ -88,16 +92,37 @@ def process_add(mods, session):
             ep.value = pickle.dumps(item['parameters']['value'])
 
         session.add(ep)
-        session.flush()
+        ops.append(lambda: ServiceHub.retrieve(DriverSrv).get(ep.driver_uuid).add_endpoint(ep))
+    session.flush()
+    return ops
 
-        return lambda: ServiceHub.retrieve(DriverSrv).get(ep.driver_uuid).add_endpoint(ep)
+
+@db_session
+def process_delete(mods, session):
+    ops = list()
+
+    for item in mods:
+        ep = EndpointMdl.get_endpoint_by_uuid(uuid=uuid.UUID(item),
+                                              session=session)
+        try:
+            session.delete(ep)
+        except IntegrityError:
+            raise ApiOperationError("delete",
+                                    f"Cannot delete item in use with uuid: {item}")
+        ops.append(lambda: ServiceHub.retrieve(DriverSrv).get(ep.driver_uuid).delete_endpoint(ep))
+    session.flush()
+    return ops
 
 
 @db_session
 def process_modifications(mods, session):
+    ops = list()
     try:
-        process_add(mods=mods['added'], session=session)
+        ops.extend(process_add(mods=mods['added'], session=session))
+        ops.extend(process_delete(mods=mods['removed'], session=session))
     except ApiOperationError as e:
         session.rollback()
         raise e
+    for item in ops:
+        item()
     session.commit()
