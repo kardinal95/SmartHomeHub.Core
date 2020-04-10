@@ -16,15 +16,15 @@ def abort_on_exc(func):
 
 
 class ApiOperationError(Exception):
-    def __init__(self, op, text, debug=None):
-        self.op = op
-        self.text = text
-        self.debug = debug
+    def __init__(self, msg, target):
+        self.msg = msg
+        self.target = target
 
     def __str__(self):
-        if self.debug is None:
-            return 'Error on operation:{}\n{}\n'.format(self.op, self.text)
-        return 'Error on operation:{}\n{}\n{}'.format(self.op, self.text, self.debug)
+        return str({
+            'msg': self.msg,
+            'target': self.target
+        })
 
 
 class IncorrectTargetException(Exception):
