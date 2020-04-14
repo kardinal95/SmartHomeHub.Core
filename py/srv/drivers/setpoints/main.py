@@ -18,6 +18,10 @@ class SetpointDriver:
     def delete_endpoint(self, endpoint):
         logger.debug('Deleting setpoint with name {}'.format(endpoint.name))
 
+    def update_endpoint(self, endpoint):
+        logger.debug('Updating setpoint with uuid'.format(endpoint.uuid))
+        self.data_from_ep(endpoint)
+
     @db_session
     def __init__(self, uuid, session):
         self.uuid = uuid

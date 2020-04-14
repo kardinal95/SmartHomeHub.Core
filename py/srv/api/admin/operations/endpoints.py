@@ -92,7 +92,46 @@ def process_add(mods, session):
             if "value" not in item['parameters'].keys():
                 raise ApiOperationError("Missing required parameter: value", item['uuid'])
             ep.setpoint_params.value = pickle.dumps(item['parameters']['value']['value'])
+        session.add(ep)
+        eps.append(ep)
+    session.flush()
+    return eps
 
+
+@db_session
+def process_edit(mods, session):
+    eps = list()
+
+    for item in mods:
+        ep = EndpointMdl.get_endpoint_by_uuid(uuid=uuid.UUID(item['uuid']),
+                                              session=session)
+        ep.name = item['name']
+        if ep.driver_uuid != uuid.UUID(item['driver']['uuid']):
+            raise ApiOperationError("Changing item driver is not available", item['uuid'])
+        if ep.driver_type == DriverTypeEnum.mqtt:
+            if item['parameters']['topic_read']['value'] == "":
+                raise ApiOperationError("Cannot subscribe on empty topics", item['uuid'])
+            ep.mqtt_params.topic_read = item['parameters']['topic_read']['value']
+            ep.mqtt_params.topic_write = item['parameters']['topic_write']['value']
+            if MqttTypeMdl.get_by_name(name=item['parameters']['type']['value'],
+                                       session=session) is None:
+                raise ApiOperationError("Cannot find specified mqtt type", item['uuid'])
+            ep.mqtt_params.type = MqttTypeMdl.get_by_name(name=item['parameters']['type']['value'],
+                                                          session=session)
+        elif ep.driver_type == DriverTypeEnum.alarm:
+            try:
+                ep.alarm_params.severity = AlarmSeverityEnum[item['parameters']['severity']['value']]
+            except KeyError:
+                raise ApiOperationError(f"Incorrect alarm severity: {item['parameters']['severity']['value']}",
+                                        item['uuid'])
+            try:
+                ep.alarm_params.acl = int(item['parameters']['acl']['value'])
+            except ValueError:
+                raise ApiOperationError(f"Incorrect value for acl: {item['parameters']['acl']['value']}",
+                                        item['uuid'])
+        elif ep.driver_type == DriverTypeEnum.setpoint:
+            ep.setpoint_params.name = item['parameters']['name']['value']
+            ep.setpoint_params.value = pickle.dumps(item['parameters']['value']['value'])
         session.add(ep)
         eps.append(ep)
     session.flush()
@@ -121,6 +160,7 @@ def process_modifications(mods, session):
     try:
         eps['added'] = (process_add(mods=mods['added'], session=session))
         eps['removed'] = (process_delete(mods=mods['removed'], session=session))
+        eps['changed'] = (process_edit(mods=mods['changed'], session=session))
     except ApiOperationError as e:
         session.rollback()
         raise e
@@ -128,4 +168,6 @@ def process_modifications(mods, session):
         ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).add_endpoint(item)
     for item in eps['removed']:
         ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).delete_endpoint(item)
+    for item in eps['changed']:
+        ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).edit_endpoint(item)
     session.commit()

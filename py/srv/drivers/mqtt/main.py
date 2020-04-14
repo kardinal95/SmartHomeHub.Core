@@ -14,13 +14,25 @@ from py.srv.redis import RedisSrv
 class MqttDriver:
     __drivertype__ = 'mqtt'
 
+    _topics = dict()
+
     def add_endpoint(self, endpoint):
         logger.debug('Subscribing on MQTT device with name {}'.format(endpoint.name))
+        self._topics[endpoint.uuid] = endpoint.mqtt_params.topic_read
         self.client.subscribe(endpoint.mqtt_params.topic_read)
 
     def delete_endpoint(self, endpoint):
         logger.debug('Unsubscribing from MQTT device with name {}'.format(endpoint.name))
+        if endpoint.uuid in self._topics.keys():
+            del(self._topics[endpoint.uuid])
         self.client.unsubscribe(endpoint.mqtt_params.topic_read)
+
+    def update_endpoint(self, endpoint):
+        logger.debug('Updating MQTT device with uuid {}'.format(str(endpoint.uuid)))
+        if endpoint.uuid in self._topics.keys():
+            self.client.unsubscribe(self._topics[endpoint.uuid])
+        self._topics[endpoint.uuid] = endpoint.mqtt_params.topic_read
+        self.client.subscribe(endpoint.mqtt_params.topic_read)
 
     @db_session
     def on_connect(self, client, userdata, flags, rc, session):
