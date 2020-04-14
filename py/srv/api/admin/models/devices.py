@@ -56,6 +56,6 @@ class DeviceDTO:
             'name': self.name,
             'type': self.dev_type.name,
             'exported': self.exported,
-            'interface': self.interface or self.interface.as_json(),
+            'interface': self.interface.as_json() if self.exported else self.interface,
             'sources': {item.device_param: item.as_json() for item in self.sources}
         }
