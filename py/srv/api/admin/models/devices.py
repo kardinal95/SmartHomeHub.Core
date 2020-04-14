@@ -33,7 +33,7 @@ class SourceDTO:
 
     def as_json(self):
         return {
-            'ep_uuid': self.ep_uuid,
+            'ep_uuid': str(self.ep_uuid),
             'ep_param': self.ep_param,
         }
 
