@@ -7,6 +7,8 @@ from py.srv.database.models.interface import InterfaceMdl
 from py.srv.drivers.alarms.models import AlarmParamsMdl
 from py.srv.drivers.mqtt.models import MqttParamsMdl, MqttTypeMdl
 from py.srv.drivers.setpoints.models import SetpointParamsMdl
+
+
 class InterfaceDTO:
     def __init__(self, interface: InterfaceMdl):
         self.read_acl = interface.read_acl
@@ -41,7 +43,11 @@ class DeviceDTO:
         self.uuid = device.uuid
         self.name = device.name
         self.dev_type = device.dev_type
-        self.interface = InterfaceDTO(device.interface)
+        self.exported = device.interface is not None
+        if self.exported:
+            self.interface = InterfaceDTO(device.interface)
+        else:
+            self.interface = None
         self.sources = SourceDTO.from_list(device.sources)
 
     def as_json(self):
@@ -49,6 +55,7 @@ class DeviceDTO:
             'uuid': str(self.uuid),
             'name': self.name,
             'type': self.dev_type.name,
-            'interface': self.interface.as_json(),
+            'exported': self.exported,
+            'interface': self.interface or self.interface.as_json(),
             'sources': {item.device_param: item.as_json() for item in self.sources}
         }
