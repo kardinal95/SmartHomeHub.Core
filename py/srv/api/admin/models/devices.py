@@ -41,6 +41,7 @@ class DeviceDTO:
     def __init__(self, device: DeviceMdl):
         self.uuid = device.uuid
         self.name = device.name
+        self.dev_type = device.dev_type
         self.interface = InterfaceDTO(device.interface)
         self.sources = SourceDTO.from_list(device.sources)
 
@@ -48,6 +49,7 @@ class DeviceDTO:
         return {
             'uuid': str(self.uuid),
             'name': self.name,
+            'type': self.dev_type.name,
             'interface': self.interface.as_json(),
             'sources': [item.as_json() for item in self.sources]
         }
