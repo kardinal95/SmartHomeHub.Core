@@ -3,7 +3,8 @@ import uuid
 from flask_restful import Resource, reqparse, abort
 
 from py.srv.api.admin.models.endpoints import EndpointDTO, get_required_params
-from py.srv.api.admin.operations.endpoints import get_all_endpoints, get_endpoint_parameters, process_modifications
+from py.srv.api.admin.operations.endpoints import get_all_endpoints, get_endpoint_parameters, process_modifications, \
+    get_all_endpoint_params
 from py.srv.api.exceptions import abort_on_exc, ApiOperationError
 from py.srv.database import db_session
 
@@ -33,6 +34,13 @@ class Endpoints(Resource):
         except ApiOperationError as e:
             abort(400, message=e.as_json())
         return
+
+
+class EndpointsParamsList(Resource):
+    @abort_on_exc
+    @db_session
+    def get(self, session):
+        return get_all_endpoint_params(session=session)
 
 
 class EndpointParameters(Resource):

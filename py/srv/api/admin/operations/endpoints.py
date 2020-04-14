@@ -171,3 +171,23 @@ def process_modifications(mods, session):
     for item in eps['changed']:
         ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).edit_endpoint(item)
     session.commit()
+
+
+@db_session
+def get_all_endpoint_params(session):
+    params = {}
+    endpoints = EndpointMdl.get_all(session=session)
+    for ep in endpoints:
+        if ep.driver_type == DriverTypeEnum.mqtt:
+            mqtt_type = ep.mqtt_params.type
+            if mqtt_type.comment == 'int_value':
+                params[str(ep.uuid)] = ['value']
+            elif mqtt_type.comment == 'point_value':
+                params[str(ep.uuid)] = ['value']
+            elif mqtt_type.comment == 'rgb_control':
+                params[str(ep.uuid)] = ['red', 'green', 'blue']
+        elif ep.driver_type == DriverTypeEnum.alarm:
+            params[str(ep.uuid)] = ['state']
+        elif ep.driver_type == DriverTypeEnum.setpoint:
+            params[str(ep.uuid)] = [ep.setpoint_params.name]
+    return params
