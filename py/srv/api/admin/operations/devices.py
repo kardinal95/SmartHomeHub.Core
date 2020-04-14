@@ -17,4 +17,4 @@ from py.srv.drivers.setpoints.models import SetpointParamsMdl
 
 @db_session
 def get_all_devices(session):
-    return DeviceMdl.get_all(session=session)
+    return DeviceMdl.get_all_devices(session=session)
