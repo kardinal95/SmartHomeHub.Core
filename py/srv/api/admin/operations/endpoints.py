@@ -169,7 +169,7 @@ def process_modifications(mods, session):
     for item in eps['removed']:
         ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).delete_endpoint(item)
     for item in eps['changed']:
-        ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).edit_endpoint(item)
+        ServiceHub.retrieve(DriverSrv).get(item.driver_uuid).update_endpoint(item)
     session.commit()
 
 
