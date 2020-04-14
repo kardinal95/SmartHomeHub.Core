@@ -33,7 +33,6 @@ class SourceDTO:
         return {
             'ep_uuid': self.ep_uuid,
             'ep_param': self.ep_param,
-            'device_param': self.device_param
         }
 
 
@@ -51,5 +50,5 @@ class DeviceDTO:
             'name': self.name,
             'type': self.dev_type.name,
             'interface': self.interface.as_json(),
-            'sources': [item.as_json() for item in self.sources]
+            'sources': {item.device_param: item.as_json() for item in self.sources}
         }
