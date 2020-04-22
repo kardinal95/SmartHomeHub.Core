@@ -10,9 +10,28 @@ from py.srv.api.exceptions import abort_on_exc, ApiOperationError
 from py.srv.database import db_session
 
 
+parser = reqparse.RequestParser()
+parser.add_argument('mods',
+                    help='This field cannot be blank',
+                    type=dict,
+                    required=True,
+                    location='json')
+
+
 class Devices(Resource):
     @abort_on_exc
     @db_session
     def get(self, session):
         devices = get_all_devices(session=session)
         return [DeviceDTO(x).as_json() for x in devices]
+
+    @abort_on_exc
+    @db_session
+    def post(self, session):
+        args = parser.parse_args()
+
+        try:
+            process_modifications(mods=args['mods'], session=session)
+        except ApiOperationError as e:
+            abort(400, message=e.as_json())
+        return
