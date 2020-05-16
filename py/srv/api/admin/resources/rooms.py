@@ -30,7 +30,7 @@ class AdmRoomDevices(Resource):
     @abort_on_exc
     @db_session
     def get(self, room_uuid, session):
-        devices = get_room_devices(uuid=uuid.UUID(room_uuid), session=session)
+        devices = get_room_devices(room_uuid, session=session)
         return [str(x.uuid) for x in devices]
 
     @abort_on_exc
