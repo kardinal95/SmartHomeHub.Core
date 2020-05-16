@@ -10,7 +10,10 @@ class AdmRooms(Resource):
     @db_session
     def get(self, session):
         rooms = get_all_rooms(session=session)
-        return {str(x.uuid): x.name for x in rooms}
+        return [{
+            'uuid': str(x.uuid),
+            'name': x.name
+        } for x in rooms]
 
 
 class AdmRoomDevices(Resource):
