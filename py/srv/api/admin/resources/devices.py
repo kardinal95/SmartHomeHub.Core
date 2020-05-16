@@ -35,3 +35,11 @@ class Devices(Resource):
         except ApiOperationError as e:
             abort(400, message=e.as_json())
         return
+
+
+class DevicesShort(Resource):
+    @abort_on_exc
+    @db_session
+    def get(self, session):
+        devices = get_all_devices(session=session)
+        return {str(x.uuid): x.name for x in devices}
