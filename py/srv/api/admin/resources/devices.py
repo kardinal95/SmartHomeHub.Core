@@ -42,4 +42,7 @@ class DevicesShort(Resource):
     @db_session
     def get(self, session):
         devices = get_all_devices(session=session)
-        return {str(x.uuid): x.name for x in devices}
+        return [{
+            'uuid': str(x.uuid),
+            'name': x.name
+        } for x in devices]
