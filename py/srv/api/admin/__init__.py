@@ -2,7 +2,7 @@ from py.srv.api.admin.resources.devices import Devices, DevicesShort
 from py.srv.api.admin.resources.drivers import Drivers
 from py.srv.api.admin.resources.endpoints import Endpoints, EndpointParameters, EndpointsParamsList
 from py.srv.api.admin.resources.meta import DriverTypes, DriverTypeParameters
-from py.srv.api.admin.resources.admrooms import AdmRooms, AdmRoomDevices
+from py.srv.api.admin.resources.rooms import AdmRooms, AdmRoomDevices
 
 
 def add_resources(api):
