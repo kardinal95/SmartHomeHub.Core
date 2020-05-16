@@ -5,7 +5,7 @@ from py.srv.api.exceptions import abort_on_exc
 from py.srv.database import db_session
 
 
-class Rooms(Resource):
+class AdmRooms(Resource):
     @abort_on_exc
     @db_session
     def get(self, session):
@@ -13,7 +13,7 @@ class Rooms(Resource):
         return {str(x.uuid): x.name for x in rooms}
 
 
-class RoomDevices(Resource):
+class AdmRoomDevices(Resource):
     @abort_on_exc
     @db_session
     def get(self, room_uuid, session):
