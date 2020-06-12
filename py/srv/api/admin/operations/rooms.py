@@ -19,6 +19,17 @@ def get_room_devices(uuid, session):
 
 
 @db_session
+def add_room(name, session):
+    room = RoomMdl.get_room_with_name(name=name, session=session)
+    if room is not None:
+        raise ApiOperationError("Room with that name already exists", name)
+    else:
+        room = RoomMdl(name=name)
+        session.add(room)
+        session.commit()
+
+
+@db_session
 def process_add(uuid, session, mods):
     room = RoomMdl.get_room_with_uuid(uuid=UUID(uuid), session=session)
     for item in mods:

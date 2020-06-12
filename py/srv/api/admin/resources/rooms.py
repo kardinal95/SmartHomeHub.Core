@@ -14,6 +14,13 @@ parser.add_argument('mods',
                     required=True,
                     location='json')
 
+parser2 = reqparse.RequestParser()
+parser2.add_argument('name',
+                     help='This field cannot be blank',
+                     type=str,
+                     required=True,
+                     location='json')
+
 
 class AdmRooms(Resource):
     @abort_on_exc
@@ -24,6 +31,17 @@ class AdmRooms(Resource):
             'uuid': str(x.uuid),
             'name': x.name
         } for x in rooms]
+
+    @abort_on_exc
+    @db_session
+    def post(self, session):
+        args = parser2.parse_args()
+        try:
+            add_room(name=args['name'], session=session)
+        except ApiOperationError as e:
+            abort(400, message=e.as_json())
+        return
+
 
 
 class AdmRoomDevices(Resource):
