@@ -30,6 +30,16 @@ def add_room(name, session):
 
 
 @db_session
+def delete_room(uuid, session):
+    room = RoomMdl.get_room_with_uuid(uuid=uuid, session=session)
+    if room is None:
+        raise ApiOperationError("Room with this uuid is not found", uuid)
+    else:
+        session.delete(room)
+        session.commit()
+
+
+@db_session
 def process_add(uuid, session, mods):
     room = RoomMdl.get_room_with_uuid(uuid=UUID(uuid), session=session)
     for item in mods:
