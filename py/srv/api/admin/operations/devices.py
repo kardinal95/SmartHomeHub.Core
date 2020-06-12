@@ -86,7 +86,8 @@ def process_edit(mods, session):
             if item['exported']:
                 if item['interface'] is None:
                     raise ApiOperationError("Interface parameters not specified", item['uuid'])
-                dev.interface = InterfaceMdl()
+                if dev.interface is None:
+                    dev.interface = InterfaceMdl()
                 dev.interface.read_acl = item['interface']['read_acl']
                 dev.interface.write_acl = item['interface']['write_acl']
             else:
