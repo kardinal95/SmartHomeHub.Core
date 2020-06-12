@@ -113,7 +113,6 @@ def process_edit(mods, session):
             link.endpoint_param = item['sources'][param]['ep_param']
             link.endpoint_uuid = uuid.UUID(item['sources'][param]['ep_uuid'])
             dev.sources.append(link)
-        session.add(dev)
     session.flush()
 
 
