@@ -2,7 +2,7 @@ import uuid
 
 from flask_restful import Resource, reqparse, abort
 
-from py.srv.api.admin.operations.rooms import get_all_rooms, get_room_devices, process_modifications
+from py.srv.api.admin.operations.rooms import get_all_rooms, get_room_devices, process_modifications, add_room
 from py.srv.api.exceptions import abort_on_exc, ApiOperationError
 from py.srv.database import db_session
 
@@ -41,7 +41,6 @@ class AdmRooms(Resource):
         except ApiOperationError as e:
             abort(400, message=e.as_json())
         return
-
 
 
 class AdmRoomDevices(Resource):
