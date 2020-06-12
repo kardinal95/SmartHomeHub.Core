@@ -76,43 +76,44 @@ def process_delete(mods, session):
 
 @db_session
 def process_edit(mods, session):
-    for item in mods:
-        dev = DeviceMdl.get_device_with_uuid(uuid=uuid.UUID(item['uuid']),
-                                             session=session)
-        if item['name'] == "":
-            raise ApiOperationError("Name cannot be empty", item['uuid'])
-        dev.name = item['name']
-        if item['exported']:
-            if item['interface'] is None:
-                raise ApiOperationError("Interface parameters not specified", item['uuid'])
-            dev.interface = InterfaceMdl()
-            dev.interface.read_acl = item['interface']['read_acl']
-            dev.interface.write_acl = item['interface']['write_acl']
-        else:
-            dev.interface = None
-        if item['type'] == "":
-            raise ApiOperationError("Type cannot be empty", item['uuid'])
-        try:
-            ent = DeviceEntEnum[item['type']]
-            if ent != dev.dev_type:
-                dev.dev_type = DeviceEntEnum[item['type']]
-        except KeyError:
-            raise ApiOperationError("Incorrect device type", item['uuid'])
-        dev.sources = list()
-        for param in item['sources'].keys():
-            if item['sources'][param]['ep_param'] == "":
-                raise ApiOperationError('Endpoint parameter not specified', item['uuid'])
-            if item['sources'][param]['ep_uuid'] == "":
-                raise ApiOperationError('Endpoint uuid not specified', item['uuid'])
-            if EndpointMdl.get_endpoint_by_uuid(uuid=uuid.UUID(item['sources'][param]['ep_uuid']),
-                                                session=session) is None:
-                raise ApiOperationError('Endpoint with selected uuid not found', item['uuid'])
-            link = DeviceSourceMdl()
-            link.device_param = param
-            link.device_uuid = dev.uuid
-            link.endpoint_param = item['sources'][param]['ep_param']
-            link.endpoint_uuid = uuid.UUID(item['sources'][param]['ep_uuid'])
-            dev.sources.append(link)
+    with session.no_autoflush:
+        for item in mods:
+            dev = DeviceMdl.get_device_with_uuid(uuid=uuid.UUID(item['uuid']),
+                                                 session=session)
+            if item['name'] == "":
+                raise ApiOperationError("Name cannot be empty", item['uuid'])
+            dev.name = item['name']
+            if item['exported']:
+                if item['interface'] is None:
+                    raise ApiOperationError("Interface parameters not specified", item['uuid'])
+                dev.interface = InterfaceMdl()
+                dev.interface.read_acl = item['interface']['read_acl']
+                dev.interface.write_acl = item['interface']['write_acl']
+            else:
+                dev.interface = None
+            if item['type'] == "":
+                raise ApiOperationError("Type cannot be empty", item['uuid'])
+            try:
+                ent = DeviceEntEnum[item['type']]
+                if ent != dev.dev_type:
+                    dev.dev_type = DeviceEntEnum[item['type']]
+            except KeyError:
+                raise ApiOperationError("Incorrect device type", item['uuid'])
+            dev.sources = list()
+            for param in item['sources'].keys():
+                if item['sources'][param]['ep_param'] == "":
+                    raise ApiOperationError('Endpoint parameter not specified', item['uuid'])
+                if item['sources'][param]['ep_uuid'] == "":
+                    raise ApiOperationError('Endpoint uuid not specified', item['uuid'])
+                if EndpointMdl.get_endpoint_by_uuid(uuid=uuid.UUID(item['sources'][param]['ep_uuid']),
+                                                    session=session) is None:
+                    raise ApiOperationError('Endpoint with selected uuid not found', item['uuid'])
+                link = DeviceSourceMdl()
+                link.device_param = param
+                link.device_uuid = dev.uuid
+                link.endpoint_param = item['sources'][param]['ep_param']
+                link.endpoint_uuid = uuid.UUID(item['sources'][param]['ep_uuid'])
+                dev.sources.append(link)
     session.flush()
 
 
