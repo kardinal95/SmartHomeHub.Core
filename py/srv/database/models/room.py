@@ -25,7 +25,7 @@ class RoomMdl(DatabaseModel):
     name = Column(String(64), nullable=False, unique=True)
     devices = relationship('DeviceMdl',
                            secondary='device_room',
-                           backref=backref('room', uselist=False))
+                           backref=backref('rooms', uselist=True))
 
     @db_session
     def get_devices(self, session):
