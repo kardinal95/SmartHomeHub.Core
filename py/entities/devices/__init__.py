@@ -5,6 +5,7 @@ from py.entities.devices.rgb import RGBLightHexEnt
 from py.entities.devices.sensors import SensorNumericEnt, SensorBinaryEnt
 from py.entities.devices.storage import StorageEnt
 from py.entities.devices.switches import LightSwitchEnt, SwitchEnt
+from py.entities.devices.engineering import InBorderTargetValueEnt
 
 
 class DeviceEntEnum(enum.Enum):
@@ -15,6 +16,7 @@ class DeviceEntEnum(enum.Enum):
     RGBLightHex = enum.auto()
     Fan4Pos = enum.auto()
     Storage = enum.auto()
+    InBorderTarget = enum.auto()
 
 
 mapping = {
@@ -24,7 +26,8 @@ mapping = {
     DeviceEntEnum.Storage: StorageEnt,
     DeviceEntEnum.LightSwitch: LightSwitchEnt,
     DeviceEntEnum.Fan4Pos: Fan4PosEnt,
-    DeviceEntEnum.Switch: SwitchEnt
+    DeviceEntEnum.Switch: SwitchEnt,
+    DeviceEntEnum.InBorderTarget: InBorderTargetValueEnt
 }
 
 
