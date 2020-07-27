@@ -1,5 +1,6 @@
 import pickle
 import uuid
+import ast
 
 from sqlalchemy.exc import IntegrityError
 
@@ -12,6 +13,16 @@ from py.srv.drivers import DriverSrv
 from py.srv.drivers.alarms.models import AlarmParamsMdl, AlarmSeverityEnum
 from py.srv.drivers.mqtt.models import MqttParamsMdl, MqttTypeMdl
 from py.srv.drivers.setpoints.models import SetpointParamsMdl
+
+
+def tryeval(val):
+    try:
+        val = ast.literal_eval(val)
+    except ValueError:
+        return val
+    if val is None:
+        val = 'None'
+    return val
 
 
 @db_session
@@ -91,7 +102,8 @@ def process_add(mods, session):
             ep.setpoint_params.name = item['parameters']['name']['value']
             if "value" not in item['parameters'].keys():
                 raise ApiOperationError("Missing required parameter: value", item['uuid'])
-            ep.setpoint_params.value = pickle.dumps(item['parameters']['value']['value'])
+            value = tryeval(item['parameters']['value']['value'])
+            ep.setpoint_params.value = pickle.dumps(value)
         session.add(ep)
         eps.append(ep)
     session.flush()
@@ -131,7 +143,8 @@ def process_edit(mods, session):
                                         item['uuid'])
         elif ep.driver_type == DriverTypeEnum.setpoint:
             ep.setpoint_params.name = item['parameters']['name']['value']
-            ep.setpoint_params.value = pickle.dumps(item['parameters']['value']['value'])
+            value = tryeval(item['parameters']['value']['value'])
+            ep.setpoint_params.value = pickle.dumps(value)
         session.add(ep)
         eps.append(ep)
     session.flush()
