@@ -6,6 +6,7 @@ from py.entities.devices.sensors import SensorNumericEnt, SensorBinaryEnt
 from py.entities.devices.storage import StorageEnt
 from py.entities.devices.switches import LightSwitchEnt, SwitchEnt
 from py.entities.devices.engineering import InBorderTargetValueEnt
+from py.entities.devices.alarms import AlarmEnt
 
 
 class DeviceEntEnum(enum.Enum):
@@ -17,6 +18,7 @@ class DeviceEntEnum(enum.Enum):
     Fan4Pos = enum.auto()
     Storage = enum.auto()
     InBorderTarget = enum.auto()
+    Alarm = enum.auto()
 
 
 mapping = {
@@ -27,7 +29,8 @@ mapping = {
     DeviceEntEnum.LightSwitch: LightSwitchEnt,
     DeviceEntEnum.Fan4Pos: Fan4PosEnt,
     DeviceEntEnum.Switch: SwitchEnt,
-    DeviceEntEnum.InBorderTarget: InBorderTargetValueEnt
+    DeviceEntEnum.InBorderTarget: InBorderTargetValueEnt,
+    DeviceEntEnum.Alarm: AlarmEnt
 }
 
 
