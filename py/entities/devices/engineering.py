@@ -4,6 +4,13 @@ from py.srv import ServiceHub
 
 class InBorderTargetValueEnt:
     @staticmethod
+    def check_emergency(value, target, tolerance):
+        try:
+            return value < target - tolerance or value > target + tolerance
+        except TypeError:
+            return False
+
+    @staticmethod
     def outputs(device):
         return ['value', 'emergency']
 
@@ -22,5 +29,5 @@ class InBorderTargetValueEnt:
             }
         return {
             'value': value,
-            'emergency': value < target - tolerance or value > target + tolerance
+            'emergency': InBorderTargetValueEnt.check_emergency(value, target, tolerance)
         }
