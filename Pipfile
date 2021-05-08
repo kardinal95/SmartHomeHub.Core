@@ -20,7 +20,7 @@ flask-jwt-extended = "==3.24.1"
 flask-cors = "==3.0.8"
 python-socketio = "==4.4.0"
 flask-socketio = "==4.2.1"
-eventlet = "==0.25.1"
+eventlet = "==0.31.0"
 
 [requires]
 python_version = "3.7"
